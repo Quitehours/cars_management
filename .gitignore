@@ -18,3 +18,7 @@
 
 # Used by dotenv library to load environment variables.
 .env
+
+# User config
+.ruby-gemset
+.rvmrc
