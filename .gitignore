@@ -17,7 +17,7 @@
 /lib/bundler/man/
 
 # Used by dotenv library to load environment variables.
-.env
+#.env
 
 # User config
 .ruby-gemset
