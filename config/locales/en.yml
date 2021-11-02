@@ -1,1 +1,7 @@
 en:
+  search:
+    sort_option_date: 'date_added'
+    sort_option_price: 'price'
+    sort_direction_desc: 'desc'
+    sort_direction_asc: 'desc'
+

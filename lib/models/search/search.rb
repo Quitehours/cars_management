@@ -29,15 +29,15 @@ class Search
     @filter_list.map! { |car| car if range.include?(car.price) }.compact!
   end
 
-  def filter_sort(option_parameter = 'date_added', direction_parameter = 'desk')
+  def filter_sort(option_parameter = I18.t('search.sort_option_date'), direction_parameter = I18.t('search.sort_direction_desc'))
     sort_options(option_parameter)
     sort_directions(direction_parameter)
   end
 
   private
 
-  def sort_options(option_parameter = 'date_added')
-    return @filter_list.sort_by!(&:price) if option_parameter == 'price'
+  def sort_options(option_parameter)
+    return @filter_list.sort_by!(&:price) if option_parameter == I18.t('search.sort_option_price')
 
     @filter_list.sort_by! { |car| Time.parse(car.date) }
   end
