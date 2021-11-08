@@ -1,58 +1,21 @@
 # frozen_string_literal: true
 
 class Search
-  attr_accessor :filter_list
+  attr_accessor :statistics, :search_rules
 
-  def initialize
-    @filter_list = FileManager.read_from_yaml
-  end
-
-  def make(search_make)
-    return @filter_list if search_make.empty?
-
-    @filter_list.map! { |car| car if car.make == search_make }.compact!
-  end
-
-  def model(search_model)
-    return @filter_list if search_model.empty?
-
-    @filter_list.map! { |car| car if car.model == search_model }.compact!
-  end
-
-  def year_range(search_year_from, search_year_to)
-    range = calculate_range(search_year_from, search_year_to)
-    @filter_list.map! { |car| car if range.include?(car.year) }.compact!
-  end
-
-  def price_range(search_year_from, search_year_to)
-    range = calculate_range(search_year_from, search_year_to)
-    @filter_list.map! { |car| car if range.include?(car.price) }.compact!
-  end
-
-  def filter_sort(option_parameter = I18.t('search.sort_option_date'), direction_parameter = I18.t('search.sort_direction_desc'))
-    sort_options(option_parameter)
-    sort_directions(direction_parameter)
+  def initialize(hash_rules)
+    @search_rules = SearchRules.new(hash_rules)
   end
 
   private
 
-  def sort_options(option_parameter)
-    return @filter_list.sort_by!(&:price) if option_parameter == I18.t('search.sort_option_price')
-
-    @filter_list.sort_by! { |car| Time.parse(car.date) }
-  end
-
-  def sort_directions(direction_parameter)
-    return @filter_list if direction_parameter == 'ask'
-
-    @filter_list.reverse
-  end
-
-  def calculate_range(from, to)
-    return (0..nil) if from.zero? && to.zero?
-    return (0..to) if from.zero?
-    return (from..nil) if to.zero?
-
-    (from..to)
+  def filtering_cars
+    temp_data = FilterSearch.new
+    temp_data.make(search_rules.make)
+    temp_data.model(search_rules.model)
+    temp_data.year_range(search_rules.year_from, search_rules.year_to)
+    temp_data.price_range(search_rules.price_from, search_rules.price_to)
+    temp_data.filter_sort(search_rules.sort_option, search_rules.sort_direction)
+    temp_data.filter_list
   end
 end
