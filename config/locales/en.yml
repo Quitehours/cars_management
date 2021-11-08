@@ -1,7 +1,15 @@
 en:
   search:
-    sort_option_date: 'date_added'
-    sort_option_price: 'price'
-    sort_direction_desc: 'desc'
-    sort_direction_asc: 'desc'
-
+    sort_option_date: date_added
+    sort_option_price: price
+    sort_direction_desc: desc
+    sort_direction_asc: asc
+  console:
+    app_start: Please select search rules.
+    default_output: Please choose
+    sort_parameter_make: make
+    sort_parameter_model: model
+    sort_parameter_year_from: year_from
+    sort_parameter_year_to: year_to
+    sort_parameter_price_from: price_from
+    sort_parameter_price_to: price_to
