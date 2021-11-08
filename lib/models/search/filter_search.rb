@@ -29,7 +29,8 @@ class FilterSearch
     @filter_list.map! { |car| car if range.include?(car.price) }.compact!
   end
 
-  def filter_sort(option_parameter = I18n.t('search.sort_option_date'), direction_parameter = I18n.t('search.sort_direction_desc'))
+  def filter_sort(option_parameter = I18n.t('filter_search.sort_option_date'),
+                  direction_parameter = I18n.t('filter_search.sort_direction_desc'))
     sort_options(option_parameter)
     sort_directions(direction_parameter)
   end
@@ -39,13 +40,13 @@ class FilterSearch
   DB_CARS = ENV['DB_CARS_PATH']
 
   def sort_options(option_parameter)
-    return @filter_list.sort_by!(&:price) if option_parameter == I18n.t('search.sort_option_price')
+    return @filter_list.sort_by!(&:price) if option_parameter == I18n.t('filter_search.sort_option_price')
 
     @filter_list.sort_by! { |car| Time.parse(car.date) }
   end
 
   def sort_directions(direction_parameter)
-    return @filter_list if direction_parameter == I18n.t('search.sort_direction_asc')
+    return @filter_list if direction_parameter == I18n.t('filter_search.sort_direction_asc')
 
     @filter_list.reverse
   end
