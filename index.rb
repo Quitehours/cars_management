@@ -2,4 +2,5 @@
 
 require_relative 'auto_loader'
 
-puts 'Hello world!'
+console = Console.new
+console.call

@@ -13,4 +13,8 @@ class Car
     @description = args.fetch(:description, '')
     @date = Time.new.strftime('%d/%m/%Y')
   end
+
+  def to_s
+    
+  end
 end

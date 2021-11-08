@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class Search
-  attr_accessor :statistics, :search_rules
+  attr_accessor :search_rules
 
   def initialize(hash_rules)
     @search_rules = SearchRules.new(hash_rules)
+  end
+
+  def start
+    filtering_cars
   end
 
   private
