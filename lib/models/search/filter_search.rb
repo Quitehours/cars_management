@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FilterSearch
-  attr_reader :filter_list 
+  attr_reader :filter_list
 
   def initialize
     @filter_list = FileManager.read_from_yaml(file_path: DB_CARS)
