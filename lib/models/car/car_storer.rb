@@ -5,11 +5,10 @@ class CarStorer
 
   class << self
     def save(params)
-      car = Car.new(make: params[:make], model: params[:model], year: params[:year], odometer: params[:odometer],
-      price: params[:price], description: params[:description])
+      new_car = Car.new(params)
       list_cars = FileManager.read_from_yaml(path: DB_CARS_PATH)
 
-      list_cars.push(car)
+      list_cars.push(new_car)
       FileManager.write_to_yaml(path: DB_CARS_PATH, data: list_cars)
     end
   end
