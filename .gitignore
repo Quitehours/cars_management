@@ -23,5 +23,3 @@
 .ruby-gemset
 .rvmrc
 
-#cars database
-db.yml
