@@ -22,7 +22,7 @@ class Console
 
   def call
     requirement_output
-    cars_list_filtering(@hash_data).each(&:to_s)
+    cars_list_output(@hash_data)
   end
 
   private
@@ -42,5 +42,11 @@ class Console
   def cars_list_filtering(search_rules)
     search = Search.new(search_rules)
     search.start
+  end
+
+  def cars_list_output(search_rules)
+    puts "\n#{'-' * 25}#{"\n" * 2}Results:#{"\n" * 2}"
+
+    cars_list_filtering(search_rules).each(&:to_s)
   end
 end
