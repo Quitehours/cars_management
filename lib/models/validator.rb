@@ -9,7 +9,7 @@ module Validator
       year_to: args.fetch(:year_to, '').strip.to_i,
       price_from: args.fetch(:price_from, '').strip.to_i,
       price_to: args.fetch(:price_to, '').strip.to_i,
-      sort_option: args.fetch(:sort_option , '').strip.downcase,
+      sort_option: args.fetch(:sort_option, '').strip.downcase,
       sort_direction: args.fetch(:sort_direction, '').strip.downcase
     }
   end

@@ -1,0 +1,55 @@
+---
+- !ruby/object:Car
+  id: 39f700e1-9f79-4898-b5fb-88c8446a084f
+  make: Ford
+  model: Mondeo
+  year: 2012
+  odometer: 616123
+  price: 2000
+  description: Almost new car
+  date: '09/11/2021'
+- !ruby/object:Car
+  id: 0cb09d70-7c2a-4dcd-8928-e9e7e39f7c2a
+  make: Mitsubishi
+  model: Pajero
+  year: 2010
+  odometer: 616123
+  price: 1000
+  description: Almost new car
+  date: '09/11/2021'
+- !ruby/object:Car
+  id: 63e77dc6-a70a-4fea-b0b7-8175fd2b256d
+  make: Ford
+  model: Mustang
+  year: 2050
+  odometer: 616123
+  price: 20000
+  description: Almost new car
+  date: '09/11/2021'
+- !ruby/object:Car
+  id: d59c97d7-784f-4e41-bcda-da98af977fbb
+  make: Ford
+  model: Mondeo
+  year: 2016
+  odometer: 616123
+  price: 10000
+  description: Almost new car
+  date: '09/11/2021'
+- !ruby/object:Car
+  id: bf744436-fefe-4744-a3e7-8d497cdd0dd3
+  make: Mitsubishi
+  model: Pajero
+  year: 2016
+  odometer: 616123
+  price: 20000
+  description: Almost new car
+  date: '09/11/2021'
+- !ruby/object:Car
+  id: 51a6f5ae-fbb2-4f2f-acba-135c27191796
+  make: Ford
+  model: Mustang
+  year: 2016
+  odometer: 616123
+  price: 20000
+  description: Almost new car
+  date: '09/11/2021'

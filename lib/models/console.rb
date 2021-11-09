@@ -2,7 +2,7 @@
 
 class Console
   include Validator
-  
+
   attr_accessor :hash_data
 
   SEARCH_REQUIRMENTS = [

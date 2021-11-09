@@ -4,8 +4,8 @@ class FileManager
   # WHITELIST_CLASSES = [Symbol, Time, Car, CarStorer].freeze
 
   class << self
-    def write_to_yaml(path:, data:)
-      File.write(path, data.to_yaml)
+    def write_to_yaml(file_path:, data:)
+      File.write(file_path, data.to_yaml)
     end
 
     def read_from_yaml(file_path:)

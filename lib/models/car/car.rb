@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Car
-  attr_writer :make, :model, :year, :odometer, :price, :description, :date
+  attr_accessor :make, :model, :year, :odometer, :price, :description, :date
 
   def initialize(args = {})
     @id = SecureRandom.uuid
@@ -15,6 +15,14 @@ class Car
   end
 
   def to_s
-    
+    puts "Id: #{@id}\n" \
+         "Make: #{@make}\n" \
+         "Model: #{model}\n" \
+         "Year: #{year}\n" \
+         "Odometer: #{@odometer}\n" \
+         "Price: #{@price}\n" \
+         "Description: #{@description}\n" \
+         "Date added: #{@date}\n"
+    puts '-' * 25
   end
 end
