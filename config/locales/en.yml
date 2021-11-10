@@ -13,7 +13,7 @@ en:
     sort_parameter_year_to: year_to
     sort_parameter_price_from: price_from
     sort_parameter_price_to: price_to
-    sort_option:  sort option
-    sort_direction:  sort direction
+    sort_option:  sort_option
+    sort_direction:  sort_direction
     option_kinds: (date_added | price)
     direction_kinds: (desc | asc)

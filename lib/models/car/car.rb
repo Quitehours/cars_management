@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 class Car
-  attr_accessor :make, :model, :year, :odometer, :price, :description, :date
+  attr_accessor :make, :model, :year, :odometer, :price, :description, :date_added
 
-  DEFAULT_PRICE = 0
   DEFAULT_YEAR = 0
+  DEFAULT_PRICE = 0
 
   def initialize(args = {})
     @id = SecureRandom.uuid
     @make = args.fetch(:make, '')
     @model = args.fetch(:model, '')
-    @year = args.fetch(:year, MIN_YEAR)
+    @year = args.fetch(:year, DEFAULT_YEAR)
     @odometer = args.fetch(:odometer, '')
-    @price = args.fetch(:price, MIN_PRICE)
+    @price = args.fetch(:price, DEFAULT_PRICE)
     @description = args.fetch(:description, '')
-    @date = Time.new.strftime('%d/%m/%Y')
+    @date_added = Time.new.strftime('%d/%m/%Y')
   end
 
   def to_s
@@ -25,7 +25,7 @@ class Car
          "Odometer: #{@odometer}\n" \
          "Price: #{@price}\n" \
          "Description: #{@description}\n" \
-         "Date added: #{@date}\n"
+         "Date added: #{@date_added}\n"
     puts '-' * 25
   end
 end

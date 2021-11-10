@@ -22,7 +22,11 @@ class Console
 
   def call
     requirement_output
-    cars_list_output(@hash_data)
+
+    search = Search.new(@hash_data)
+    list_cars = search.call
+
+    cars_list_output(list_cars)
   end
 
   private
@@ -39,14 +43,9 @@ class Console
     @hash_data = validate_data(@hash_data)
   end
 
-  def cars_list_filtering(search_rules)
-    search = Search.new(search_rules)
-    search.start
-  end
+  def cars_list_output(list_cars)
+    puts "\n#{'-' * 25}#{"\n" * 2}#{I18n.t('console.results')}:#{"\n" * 2}"
 
-  def cars_list_output(search_rules)
-    puts "\n#{'-' * 25}#{"\n" * 2}Results:#{"\n" * 2}"
-
-    cars_list_filtering(search_rules).each(&:to_s)
+    list_cars.each { |car| puts car.to_s }
   end
 end
