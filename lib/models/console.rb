@@ -32,8 +32,8 @@ class Console
 
     SEARCH_REQUIRMENTS.each do |requirement|
       puts "#{I18n.t('console.default_output')} #{requirement}" \
-      "#{I18n.t('console.option_kinds') if requirement == I18n.t('console.sort_option')}" \
-      "#{I18n.t('console.direction_kinds') if requirement == I18n.t('console.sort_direction')}:"
+           "#{I18n.t('console.option_kinds') if requirement == I18n.t('console.sort_option')}" \
+           "#{I18n.t('console.direction_kinds') if requirement == I18n.t('console.sort_direction')}:"
       @hash_data[requirement.to_sym] = gets.chomp
     end
     @hash_data = validate_data(@hash_data)
