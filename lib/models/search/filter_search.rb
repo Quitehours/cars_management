@@ -3,6 +3,8 @@
 class FilterSearch
   attr_reader :filter_list
 
+  MIN_BORDER_RANGE = 0
+
   def initialize
     @filter_list = FileManager.read_from_yaml(file_path: DB_CARS)
   end
@@ -52,8 +54,8 @@ class FilterSearch
   end
 
   def calculate_range(from, to)
-    return (0..nil) if from.zero? && to.zero?
-    return (0..to) if from.zero?
+    return (MIN_BORDER_RANGE..nil) if from.zero? && to.zero?
+    return (MIN_BORDER_RANGE..to) if from.zero?
     return (from..nil) if to.zero?
 
     (from..to)
