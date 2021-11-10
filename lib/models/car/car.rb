@@ -3,8 +3,8 @@
 class Car
   attr_accessor :make, :model, :year, :odometer, :price, :description, :date
 
-  MIN_PRICE = 0
-  MIN_YEAR = 0
+  DEFAULT_PRICE = 0
+  DEFAULT_YEAR = 0
 
   def initialize(args = {})
     @id = SecureRandom.uuid
