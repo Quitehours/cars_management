@@ -3,30 +3,29 @@
 class Console
   include Validator
 
-  attr_accessor :hash_data
+  attr_reader :searched_data
 
   SEARCH_REQUIRMENTS = [
-    I18n.t('console.sort_parameter_make'),
-    I18n.t('console.sort_parameter_model'),
-    I18n.t('console.sort_parameter_year_from'),
-    I18n.t('console.sort_parameter_year_to'),
-    I18n.t('console.sort_parameter_price_from'),
-    I18n.t('console.sort_parameter_price_to'),
-    I18n.t('console.sort_option'),
-    I18n.t('console.sort_direction')
+    sort_parameter_make: ['console.sort_parameter_make'],
+    sort_parameter_model: ['console.sort_parameter_model'],
+    sort_parameter_year_from: ['console.sort_parameter_year_from'],
+    sort_parameter_year_to: ['console.sort_parameter_year_to'],
+    sort_parameter_price_from: ['console.sort_parameter_price_from'],
+    sort_parameter_price_to: ['console.sort_parameter_price_to'],
+    sort_option: ['console.sort_option', 'console.option_kinds'],
+    sort_direction: ['console.sort_direction', 'console.direction_kinds']
   ].freeze
 
   def initialize
-    @hash_data = {}
+    @searched_data = {}
   end
 
   def call
     requirement_output
 
-    search = Search.new(@hash_data)
-    list_cars = search.call
+    search = Search.new(@searched_data).call
 
-    cars_list_output(list_cars)
+    cars_list_output(search)
   end
 
   private
