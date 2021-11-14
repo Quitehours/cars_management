@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Search
-  attr_accessor :search_rules
+  attr_reader :search_rules
 
-  def initialize(hash_rules)
-    @search_rules = SearchRules.new(hash_rules)
+  def initialize(search_rules)
+    @search_rules = SearchRules.new(search_rules)
   end
 
   def start
