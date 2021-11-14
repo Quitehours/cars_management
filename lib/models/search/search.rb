@@ -7,13 +7,7 @@ class Search
     @search_rules = SearchRules.new(search_rules)
   end
 
-  def start
-    filtering_cars
-  end
-
-  private
-
-  def filtering_cars
+  def call
     temp_data = FilterSearch.new
     temp_data.make(search_rules.make)
     temp_data.model(search_rules.model)
