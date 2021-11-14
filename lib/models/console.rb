@@ -39,7 +39,7 @@ class Console
            "#{I18n.t('console.direction_kinds') if requirement == I18n.t('console.sort_direction')}:"
       @hash_data[requirement.to_sym] = gets.chomp
     end
-    @hash_data = validate_data(@hash_data)
+    @hash_data = validate(@hash_data)
   end
 
   def cars_list_output(list_cars)

@@ -4,7 +4,7 @@ module Validator
   DEFAULT_YEAR = 0
   DEFAULT_PRICE = 0
 
-  def validate_data(args = {})
+  def validate(args = {})
     {
       make: args.fetch(:make, '').strip.capitalize,
       model: args.fetch(:model, '').strip.capitalize,
