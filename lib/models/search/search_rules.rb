@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SearchRules
-  attr_accessor :make, :model, :year_from, :year_to, :price_from, :price_to, :sort_option, :sort_direction
+  attr_reader :make, :model, :year_from, :year_to, :price_from, :price_to, :sort_option, :sort_direction
 
   DEFAULT_YEAR = 0
   DEFAULT_PRICE = 0
