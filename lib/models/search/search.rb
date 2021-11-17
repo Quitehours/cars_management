@@ -17,7 +17,7 @@ class Search
   private
 
   def receive_list_cars
-    FileManager.read_from_yaml(file_path: CarStorer::DB_CARS) || []
+    FileManager.read_from_yaml(file_path: CarStorer::DB_CARS)
   end
 
   def filtering_list_cars(rules, cars)
