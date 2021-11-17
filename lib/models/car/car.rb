@@ -1,31 +1,34 @@
 # frozen_string_literal: true
 
 class Car
-  attr_accessor :make, :model, :year, :odometer, :price, :description, :date_added
+  attr_reader :make, :model, :year, :odometer, :price, :description, :date_added
 
   DEFAULT_YEAR = 0
   DEFAULT_PRICE = 0
+  DEFAULT_ODOMETER = 0
+  DEFAULT_TYPE_DATE = '%d/%m/%Y'
 
-  def initialize(args = {})
+  def initialize(make: '', model: '', year: DEFAULT_YEAR, odometer: DEFAULT_ODOMETER, price: DEFAULT_PRICE, description: '')
     @id = SecureRandom.uuid
-    @make = args.fetch(:make, '')
-    @model = args.fetch(:model, '')
-    @year = args.fetch(:year, DEFAULT_YEAR)
-    @odometer = args.fetch(:odometer, '')
-    @price = args.fetch(:price, DEFAULT_PRICE)
-    @description = args.fetch(:description, '')
-    @date_added = Time.new.strftime('%d/%m/%Y')
+    @make = make
+    @model = model
+    @year = year
+    @odometer = odometer
+    @price = price
+    @description = description
+    @date_added = Time.new.strftime(DEFAULT_TYPE_DATE)
   end
 
-  def to_s
-    puts "Id: #{@id}\n" \
-         "Make: #{@make}\n" \
-         "Model: #{model}\n" \
-         "Year: #{year}\n" \
-         "Odometer: #{@odometer}\n" \
-         "Price: #{@price}\n" \
-         "Description: #{@description}\n" \
-         "Date added: #{@date_added}\n"
-    puts '-' * 25
+  def to_h
+    {
+      'id' => @id,
+      'make' => @make,
+      'model' => @model,
+      'year' => @year,
+      'odometer' => @odometer,
+      'price' => @price,
+      'description' => @description,
+      'data_added' => @date_added
+    }
   end
 end

@@ -1,62 +1,36 @@
 # frozen_string_literal: true
 
 class FilterSearch
-  attr_reader :filter_list
+  attr_reader :cars
 
-  MIN_BORDER_RANGE = 0
+  SORT_DIRECTION_ASC = 'asc'
 
-  def initialize
-    @filter_list = FileManager.read_from_yaml(file_path: DB_CARS)
+  def initialize(cars)
+    @cars = time_parse(cars)
   end
 
-  def make(search_make)
-    return @filter_list if search_make.empty?
+  def filtration_by_rule(search_rule, requirment_user)
+    return @cars if requirment_user.empty?
 
-    @filter_list.map! { |car| car if car.make == search_make }.compact!
+    @cars.select! { |car| car[search_rule] == requirment_user }
   end
 
-  def model(search_model)
-    return @filter_list if search_model.empty?
+  def filtration_by_range(search_rule, range_from, range_to)
+    range = range_from..range_to
+    return @cars if range_from.zero? && range_to.zero?
 
-    @filter_list.map! { |car| car if car.model == search_model }.compact!
+    @cars.select! { |car| range.include?(car[search_rule]) }
   end
 
-  def year_range(search_year_from, search_year_to)
-    range = calculate_range(search_year_from, search_year_to)
-    @filter_list.map! { |car| car if range.include?(car.year) }.compact!
-  end
+  def sorting(sort_type, sort_direction)
+    return @cars.sort_by! { |car| car[sort_type] } if sort_direction == SORT_DIRECTION_ASC
 
-  def price_range(search_year_from, search_year_to)
-    range = calculate_range(search_year_from, search_year_to)
-    @filter_list.map! { |car| car if range.include?(car.price) }.compact!
-  end
-
-  def filter_sort(option_parameter, direction_parameter)
-    sort_options(option_parameter)
-    sort_directions(direction_parameter)
+    @cars.sort_by! { |car| car[sort_type] }.reverse
   end
 
   private
 
-  DB_CARS = ENV['DB_CARS_PATH']
-
-  def sort_options(option_parameter)
-    return @filter_list.sort_by!(&:price) if option_parameter == I18n.t('filter_search.sort_option_price')
-
-    @filter_list.sort_by! { |car| Time.parse(car.date_added) }
-  end
-
-  def sort_directions(direction_parameter)
-    return @filter_list if direction_parameter == I18n.t('filter_search.sort_direction_asc')
-
-    @filter_list.reverse
-  end
-
-  def calculate_range(from, to)
-    return (MIN_BORDER_RANGE..nil) if from.zero? && to.zero?
-    return (MIN_BORDER_RANGE..to) if from.zero?
-    return (from..nil) if to.zero?
-
-    (from..to)
+  def time_parse(data)
+    data.each { |car| car['date_added'] = Time.parse(car['date_added']) }
   end
 end

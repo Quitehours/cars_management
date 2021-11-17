@@ -1,19 +1,38 @@
 # frozen_string_literal: true
 
 class Search
-  attr_reader :search_rules
+  attr_reader :search_rules, :sort_rules
+
+  DB_CARS = ENV['DB_CARS_PATH']
 
   def initialize(search_rules)
     @search_rules = SearchRules.new(search_rules)
+    @sort_rules = SortRules.new(search_rules)
   end
 
   def call
-    temp_data = FilterSearch.new
-    temp_data.make(search_rules.make)
-    temp_data.model(search_rules.model)
-    temp_data.year_range(search_rules.year_from, search_rules.year_to)
-    temp_data.price_range(search_rules.price_from, search_rules.price_to)
-    temp_data.filter_sort(search_rules.sort_option, search_rules.sort_direction)
-    temp_data.filter_list
+    cars = receive_list_cars
+    transform_rules = transformating_values(@search_rules, @sort_rules)
+    filtering_list_cars(transform_rules, cars)
+  end
+
+  private
+
+  def receive_list_cars
+    FileManager.read_from_yaml(file_path: DB_CARS) || []
+  end
+
+  def filtering_list_cars(rules, cars)
+    list = FilterSearch.new(cars)
+    list.filtration_by_rule('make', rules.transform_search_rules['make'])
+    list.filtration_by_rule('make', rules.transform_search_rules['make'])
+    list.filtration_by_range('year', rules.transform_search_rules['year_from'], rules.transform_search_rules['year_to'])
+    list.filtration_by_range('price', rules.transform_search_rules['price_from'],
+                             rules.transform_search_rules['price_to'])
+    list.sorting(rules.transform_sort_rules['sort_type'], rules.transform_sort_rules['sort_direction'])
+  end
+
+  def transformating_values(search_rules, sort_rules)
+    TransformatingValues.new(search_rules, sort_rules)
   end
 end

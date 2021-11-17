@@ -9,3 +9,6 @@ Layout/LineLength:
 Style/Documentation:
   Enabled: false
 
+Metrics/ParameterLists:
+  Exclude: 
+    - 'lib/models/car/car.rb'
