@@ -3,8 +3,6 @@
 class FilterSearch
   attr_reader :cars
 
-  SORT_DIRECTION_ASC = 'asc'
-
   def initialize(cars)
     @cars = time_parse(cars)
   end
@@ -23,7 +21,7 @@ class FilterSearch
   end
 
   def sorting(sort_type, sort_direction)
-    return @cars.sort_by! { |car| car[sort_type] } if sort_direction == SORT_DIRECTION_ASC
+    return @cars.sort_by! { |car| car[sort_type] } if sort_direction == TransformatingValues::SORT_DIRECTION_ASC
 
     @cars.sort_by! { |car| car[sort_type] }.reverse
   end
@@ -31,6 +29,6 @@ class FilterSearch
   private
 
   def time_parse(data)
-    data.each { |car| car['date_added'] = Time.parse(car['date_added']) }
+    data.each { |car| car['date_added'] = Time.strptime(car['date_added'], Car::DEFAULT_TYPE_DATE) }
   end
 end

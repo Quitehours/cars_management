@@ -6,7 +6,7 @@ class Car
   DEFAULT_YEAR = 0
   DEFAULT_PRICE = 0
   DEFAULT_ODOMETER = 0
-  DEFAULT_TYPE_DATE = '%d/%m/%Y'
+  DEFAULT_TYPE_DATE = '%d/%m/%y'
 
   def initialize(make: '', model: '', year: DEFAULT_YEAR, odometer: DEFAULT_ODOMETER, price: DEFAULT_PRICE, description: '')
     @id = SecureRandom.uuid

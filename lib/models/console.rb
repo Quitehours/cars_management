@@ -22,7 +22,7 @@ class Console
     requirement_output
 
     search = Search.new(@searched_data).call
-    # cars_list_output(search)
+    cars_list_output(search)
   end
 
   private
@@ -36,29 +36,33 @@ class Console
     end
   end
 
-  # def cars_list_output(list_cars)
-  #   str = <<-RESULT
-  #   #{'-' * 25}
+  def cars_list_output(list_cars)
+    puts result_doc
 
-  #   #{I18n.t('console.output_results')}:
+    list_cars.each { |car| puts car_params_doc(car) }
+  end
 
-  #   #{list_cars.each { |car| car_params_output(car) }}
-  #   RESULT
-  #   puts str
-  # end
+  def car_params_doc(car)
+    <<-CAR_PARAMS
+    #{'-' * 35}
 
-  # def car_params_output(car)
-  #   str = <<-SCHEME_CAR
-  #   Id: #{car['id']}
-  #   Make: #{car['make']}
-  #   "Model: #{car['model']}
-  #   "Year: #{car['year']}
-  #   "Odometer: #{car['odometer']}
-  #   "Price: #{car['price']}
-  #   "Description: #{car['description']}
-  #   "Date added: #{car['date_added']}
-  #   SCHEME_CAR
+    Id: #{car['id']}
+    Make: #{car['make']}
+    Model: #{car['model']}
+    Year: #{car['year']}
+    Odometer: #{car['odometer']}
+    Price: #{car['price']}
+    Description: #{car['description']}
+    Date added: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
 
-  #   puts str
-  # end
+    CAR_PARAMS
+  end
+
+  def result_doc
+    <<-RESULTS
+
+    #{I18n.t('console.output_results')}:
+
+    RESULTS
+  end
 end
