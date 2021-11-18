@@ -8,7 +8,8 @@ class TransformatingValues
   SORT_DIRECTION_ASC = 'asc'
   SORT_DIRECTION_DESC = 'desc'
 
-  def initialize(search_rules, sort_rules)
+  def initialize(search_rules, sort_rules, cars)
+    @cars_data = cars
     self.transform_search_rules = search_rules
     self.transform_sort_rules = sort_rules
   end
@@ -16,53 +17,44 @@ class TransformatingValues
   private
 
   def transform_search_rules=(value)
-    year_range = validate_range(value.year_from, value.year_to)
-    price_range = validate_range(value.price_from, value.price_to)
-
     @transform_search_rules =
       {
-        'make' => value.make.strip.capitalize,
-        'model' => value.model.strip.capitalize,
-        'year_from' => year_range[:from],
-        'year_to' => year_range[:to],
-        'price_from' => price_range[:from],
-        'price_to' => price_range[:to]
+        make: value[:make].strip.capitalize,
+        model: value[:model].strip.capitalize,
+        year_from: search_param_or_default(value[:year_from], min_year),
+        year_to: search_param_or_default(value[:year_to], Time.now.year),
+        price_from: search_param_or_default(value[:price_from], min_price),
+        price_to: search_param_or_default(value[:price_to], max_price)
       }
   end
 
   def transform_sort_rules=(value)
-    sort_rules = validate_sort_rules(value)
-
     @transform_sort_rules =
       {
-        'sort_type' => sort_rules[:type],
-        'sort_direction' => sort_rules[:direction]
+        sort_type: sort_param_or_default(value[:sort_type], SORT_TYPE_PRICE, SORT_TYPE_DATE_ADDED),
+        sort_direction: sort_param_or_default(value[:sort_direction], SORT_DIRECTION_ASC, SORT_DIRECTION_DESC)
       }
   end
 
-  def validate_range(from, to)
-    from = from.to_i
-    to = to.to_i
-
-    from = 0 if from.negative?
-    # from = 0 if from > to
-    to = 0 if to.negative?
-
-    if from > to
-      from = 0
-      to = 0
-    end
-
-    { from: from, to: to }
+  def search_param_or_default(search_param, default)
+    search_param.strip.empty? ? default : search_param.to_i
   end
 
-  def validate_sort_rules(value)
-    type = value.sort_type.strip.downcase
-    direction = value.sort_direction.strip.downcase
+  def sort_param_or_default(value, sort_param, default)
+    value = value.strip.downcase
 
-    type = type.casecmp(SORT_TYPE_PRICE).zero? ? SORT_TYPE_PRICE : SORT_TYPE_DATE_ADDED
-    direction = direction.casecmp(SORT_DIRECTION_ASC).zero? ? SORT_DIRECTION_ASC : SORT_DIRECTION_DESC
+    value.include?(sort_param) ? sort_param : default
+  end
 
-    { type: type, direction: direction }
+  def max_price
+    @cars_data.max_by { |car| car['price'] }['price']
+  end
+
+  def min_price
+    @cars_data.min_by { |car| car['price'] }['price']
+  end
+
+  def min_year
+    @cars_data.min_by { |car| car['year'] }['year']
   end
 end
