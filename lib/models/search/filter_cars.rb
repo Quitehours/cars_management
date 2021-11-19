@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FilterSearch
+class FilterCars
   attr_reader :cars
 
   def initialize(cars)

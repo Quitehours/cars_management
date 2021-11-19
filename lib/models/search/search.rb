@@ -21,7 +21,7 @@ class Search
   end
 
   def filtering_list_cars(rules, cars)
-    FilterSearch.new(cars).call(rules)
+    FilterCars.new(cars).call(rules)
   end
 
   def transformating_values(search_rules, sort_rules, data)
