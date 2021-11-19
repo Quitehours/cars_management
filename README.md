@@ -1,4 +1,3 @@
-# Hello world!
 ## How to setup the application:
 <ol>
   <li><p>Follow the link https://github.com/Quitehours/cars_management</p></li>
@@ -12,5 +11,9 @@
   <li><p>Then open terminal and go to local project directory.</p></li>
   <li><p>Type git clone, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of YOUR-USERNAME:</p></li>
   <code>$ git clone https://github.com/YOUR-USERNAME/Spoon-Knife</code>
-  <li><p>Congratulation! You install this app!</p></li>
+  <li><p>Go to the directory where the project was cloned</p></li>
+  <code>.your_dir/cars_management</code>
+  <li>Open the terminal and enter the command:</li>
+  <code>ruby index.rb</code>
+  <li><p>Congratulation! You installed this app and runned!</p></li>
 </ol>
