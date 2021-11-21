@@ -10,15 +10,16 @@ class Search
   end
 
   def call
-    cars = receive_list_cars
+    cars = receive_data(path: SearchStore::DB_SEARCHES)
     transform_rules = transformating_values(@search_rules, @sort_rules, cars)
     filtering_list_cars(transform_rules, cars)
+    statistics = receive_data(path: CarStorer::DB_CARS)
   end
 
   private
 
-  def receive_list_cars
-    FileManager.read_from_yaml(file_path: CarStorer::DB_CARS)
+  def receive_data(path:)
+    FileManager.read_from_yaml(file_path: path)
   end
 
   def filtering_list_cars(rules, cars)

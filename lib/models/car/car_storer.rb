@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CarStorer
-  DB_CARS = ENV['DB_CARS_PATH'] || []
+  DB_CARS = ENV['DB_CARS_PATH'] || 'db.yml'
 
   class << self
     def save(params)
