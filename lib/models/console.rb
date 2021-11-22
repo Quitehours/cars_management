@@ -22,6 +22,7 @@ class Console
     requirement_output
     search = Search.new(@searched_data)
     output(search)
+    SearchStore.save(search)
   end
 
   private
@@ -36,7 +37,7 @@ class Console
   end
 
   def output(search)
-    puts statistic_doc(search.statistics)
+    puts statistic_doc(search.statistic)
     puts result_doc
     cars = search.call
     cars.each { |car| puts car_params_doc(car) }

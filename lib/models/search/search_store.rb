@@ -5,16 +5,20 @@ class SearchStore
   ADD_IDENTICAL_REQUEST = 1
 
   class << self
-    def save(search_data)
-      temp_data = FileManager.read_from_yaml(file_path: DB_SEARCHES)
-
-      temp_data = update_request_quantity(temp_data, search_data) if already_exists?(temp_data, search_data)
-      temp_data.push(search_data) unless already_exists?(temp_data, search_data)
+    def save(current_search)
+      temp_data = collection_of_searches
+      
+      temp_data = update_request_quantity(temp_data, current_search) if already_exists?(temp_data, current_search)
+      temp_data.push(current_search) unless already_exists?(temp_data, current_search)
 
       FileManager.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
     end
 
     private
+
+    def collection_of_searches
+      FileManager.read_from_yaml(file_path: DB_SEARCHES)
+    end
 
     def already_exists?(temp_data, data)
       temp_data.any? do |search|
