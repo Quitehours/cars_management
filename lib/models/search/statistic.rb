@@ -10,6 +10,13 @@ class Statistic
     @request_quantity = search_same_requests(search_rules, sort_rules)
   end
 
+  def to_h
+    {
+      total_quantity: @total_quantity,
+      request_quantity: @request_quantity
+    }
+  end
+
   private
 
   def collection_of_searches
@@ -22,7 +29,7 @@ class Statistic
         search[:sort_rules] == sort_rules &&
         search[:statistic][:total_quantity] == @total_quantity
     end
-
-    result.nil? ? FIRST_SEARCH : result.statistic.request_quantity
+  
+    result.nil? ? FIRST_SEARCH : result[:statistic][:total_quantity]
   end
 end

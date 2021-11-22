@@ -7,9 +7,9 @@ class SearchStore
   class << self
     def save(current_search)
       temp_data = collection_of_searches
-      
-      temp_data = update_request_quantity(temp_data, current_search) if already_exists?(temp_data, current_search)
-      temp_data.push(current_search) unless already_exists?(temp_data, current_search)
+
+      temp_data = update_request_quantity(temp_data, current_search.to_h) if already_exists?(temp_data, current_search.to_h)
+      temp_data.push(current_search.to_h) unless already_exists?(temp_data, current_search.to_h)
 
       FileManager.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
     end
@@ -20,19 +20,21 @@ class SearchStore
       FileManager.read_from_yaml(file_path: DB_SEARCHES)
     end
 
-    def already_exists?(temp_data, data)
-      temp_data.any? do |search|
-        search[:search_rules] == data[:search_rules] &&
-          search[:sort_rules] == data[:sort_rules] &&
-          search[:statistics][:total_quantity] == data[:statistics][:total_quantity]
+    def update_request_quantity(searches, current_search)
+      searches.each do |search|
+        if(search[:search_rules] == current_search[:search_rules] &&
+          search[:sort_rules] == current_search[:sort_rules] &&
+          search[:statistic][:total_quantity] == current_search[:statistic][:total_quantity])
+          search[:statistic][:request_quantity] += ADD_IDENTICAL_REQUEST
+        end
       end
     end
 
-    def update_request_quantity(temp_data, data)
-      temp_data.each do |search|
-        if search[:search_rules] == data[:search_rules] && search[:sort_rules] == data[:sort_rules] && search[:statistics][:total_quantity] == data[:statistics][:total_quantity]
-          search[:statistics][:request_quantity] += ADD_IDENTICAL_REQUEST
-        end
+    def already_exists?(searches, current_search)
+      searches.any? do |search|
+        search[:search_rules] == current_search[:search_rules] &&
+          search[:sort_rules] == current_search[:sort_rules] &&
+          search[:statistic][:total_quantity] == current_search[:statistic][:total_quantity]
       end
     end
   end
