@@ -20,11 +20,8 @@ class Console
 
   def call
     requirement_output
-
     search = Search.new(@searched_data)
-
-    statistics_output(search.statistics)
-    cars_list_output(search.call)
+    output(search)
   end
 
   private
@@ -38,19 +35,15 @@ class Console
     end
   end
 
-  def statistics_output(search)
-    puts statistic_doc(search)
-  end
-
-  def cars_list_output(list_cars)
+  def output(search)
+    puts statistic_doc(search.statistics)
     puts result_doc
-
-    list_cars.each { |car| puts car_params_doc(car) }
+    cars = search.call
+    cars.each { |car| puts car_params_doc(car) }
   end
 
   def car_params_doc(car)
     <<-CAR_PARAMS
-    #{'-' * 35}
 
     Id: #{car['id']}
     Make: #{car['make']}
@@ -61,6 +54,7 @@ class Console
     Description: #{car['description']}
     Date added: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
 
+    #{'-' * 35}
     CAR_PARAMS
   end
 
