@@ -4,7 +4,7 @@ class ConsolePrettier
   def statistics_table(statistics)
     rows = rows_statistics(statistics)
 
-    table(rows, I18n.t('console.statistics'))
+    table(rows, I18n.t('console_prettier.statistics'))
   end
 
   def cars_list_table
@@ -14,8 +14,8 @@ class ConsolePrettier
 
   def rows_statistics(statistics)
     [
-      [I18n.t('console.statistics_total_quantity'), statistics.total_quantity],
-      [I18n.t('console.statistics_request_quantity'), statistics.request_quantity]
+      [I18n.t('console_prettier.total_quantity'), statistics[:total_quantity]],
+      [I18n.t('console_prettier.request_quantity'), statistics[:request_quantity]]
     ]
   end
 
