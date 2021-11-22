@@ -21,8 +21,10 @@ class Console
   def call
     requirement_output
 
-    search = Search.new(@searched_data).call
-    cars_list_output(search)
+    search = Search.new(@searched_data)
+
+    statistics_output(search.statistics)
+    cars_list_output(search.call)
   end
 
   private
@@ -34,6 +36,10 @@ class Console
       puts "#{requirement}:"
       @searched_data[rule] = gets.chomp
     end
+  end
+
+  def statistics_output(search)
+    puts statistic_doc(search)
   end
 
   def cars_list_output(list_cars)
@@ -60,9 +66,22 @@ class Console
 
   def result_doc
     <<-RESULTS
+    #{'-' * 35}
 
     #{I18n.t('console.output_results')}:
 
     RESULTS
+  end
+
+  def statistic_doc(search)
+    <<-STATISTIC
+    #{'-' * 35}
+
+    #{I18n.t('console.output_statistic')}:
+
+    Total Quantity: #{search.total_quantity}
+    Request Quantity: #{search.request_quantity}
+
+    STATISTIC
   end
 end

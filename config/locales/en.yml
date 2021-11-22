@@ -10,3 +10,4 @@ en:
     sort_type:  Please choose sort option (date_added|price)
     sort_direction:  Please choose sort direction (desc|asc)
     output_results: Results
+    output_statistic: Statistic
