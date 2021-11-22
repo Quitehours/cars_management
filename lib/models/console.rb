@@ -74,8 +74,8 @@ class Console
 
     #{I18n.t('console.output_statistic')}:
 
-    Total Quantity: #{search[:total_quantity]}
-    Request Quantity: #{search[:request_quantity]}
+    #{I18n.t('console.statistic_total_quantity')}: #{search[:total_quantity]}
+    #{I18n.t('console.statistic_request_quantity')}: #{search[:request_quantity]}
 
     STATISTIC
   end
