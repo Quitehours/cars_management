@@ -3,19 +3,26 @@
 class Statistics
   attr_reader :total_quantity, :request_quantity
 
-  def initialize(cars, search_requirment)
+  def initialize(cars, search_rules, sort_rules)
     @total_quantity = cars.length
-    @request_quantity = calculate_same_requests(search_requirment)
+    binding.pry
+    @request_quantity = search_same_requests(search_rules, sort_rules)
   end
 
   private
 
-  def receive_list_statistics
+  def collection_of_statistics
     FileManager.read_from_yaml(file_path: DB_SEARCHES)
   end
 
-  def calculate_same_requests(search_rules)
-    counter_requests(temp_data, search_rules)
+  def search_same_requests(search_rules, sort_rules)
+    collection_of_statistics.find do |search|
+      search['search_rules'] == search_rules &&
+
+      search['sort_rules'] == sort_rules &&
+
+      search['statistics']['total_quantity'] == @total_quantity
+    end
   end
 
   def counter_requests(temp_data, new_rules)

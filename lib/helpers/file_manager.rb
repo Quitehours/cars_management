@@ -9,7 +9,6 @@ class FileManager
     end
 
     def read_from_yaml(file_path:)
-      binding.pry
       File.new(file_path, 'w') unless File.exist?(file_path)
       YAML.safe_load(File.read(file_path), WHITELIST_CLASSES, [], true) || []
     end
