@@ -25,9 +25,9 @@ class SearchStore
       searches.each do |search|
         next unless search[:search_rules] == current_search[:search_rules] &&
                     search[:sort_rules] == current_search[:sort_rules] &&
-                    search[:statistic][:total_quantity] == current_search[:statistic][:total_quantity]
+                    search[:statistics][:total_quantity] == current_search[:statistics][:total_quantity]
 
-        search[:statistic][:request_quantity] += ADD_IDENTICAL_REQUEST
+        search[:statistics][:request_quantity] += ADD_IDENTICAL_REQUEST
       end
     end
 
@@ -35,7 +35,7 @@ class SearchStore
       searches.any? do |search|
         search[:search_rules] == current_search[:search_rules] &&
           search[:sort_rules] == current_search[:sort_rules] &&
-          search[:statistic][:total_quantity] == current_search[:statistic][:total_quantity]
+          search[:statistics][:total_quantity] == current_search[:statistics][:total_quantity]
       end
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Statistic
+class Statistics
   attr_reader :total_quantity, :request_quantity
 
   FIRST_SEARCH = 1
@@ -27,9 +27,9 @@ class Statistic
     result = collection_of_searches.find do |search|
       search[:search_rules] == search_rules &&
         search[:sort_rules] == sort_rules &&
-        search[:statistic][:total_quantity] == @total_quantity
+        search[:statistics][:total_quantity] == @total_quantity
     end
 
-    result.nil? ? FIRST_SEARCH : result[:statistic][:total_quantity]
+    result.nil? ? FIRST_SEARCH : result[:statistics][:total_quantity]
   end
 end

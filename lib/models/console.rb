@@ -37,7 +37,7 @@ class Console
   end
 
   def output(search)
-    puts statistic_doc(search.statistic)
+    puts statistics_doc(search.statistics)
     puts result_doc
     cars = search.call
     cars.each { |car| puts car_params_doc(car) }
@@ -68,7 +68,7 @@ class Console
     RESULTS
   end
 
-  def statistic_doc(search)
+  def statistics_doc(search)
     <<-STATISTICS
     #{'-' * 35}
 
