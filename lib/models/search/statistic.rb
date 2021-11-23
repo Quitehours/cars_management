@@ -29,7 +29,7 @@ class Statistic
         search[:sort_rules] == sort_rules &&
         search[:statistic][:total_quantity] == @total_quantity
     end
-  
+
     result.nil? ? FIRST_SEARCH : result[:statistic][:total_quantity]
   end
 end
