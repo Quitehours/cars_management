@@ -8,7 +8,8 @@ en:
       odometer: odometer
       price: price
       description: description
-      date_added: date_added 
+      date_added: date_added
+    statistics:
       total_quantity: Total Quantity
       request_quantity: Request Quantity   
   console:
@@ -22,6 +23,6 @@ en:
     sort_type:  Please choose sort option (date_added|price)
     sort_direction:  Please choose sort direction (desc|asc)
   console_prettier:
-    statistic: Statistic
+    statistics: Statistics
     results: Results
    

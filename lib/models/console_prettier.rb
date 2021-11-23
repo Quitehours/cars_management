@@ -5,7 +5,7 @@ class ConsolePrettier
 
   def statistics_table(statistics)
     rows = rows_statistics(statistics)
-    title = I18n.t('console_prettier.statistic').yellow
+    title = I18n.t('console_prettier.statistics').yellow
 
     table(rows: rows, title: title, separator: false)
   end
@@ -27,21 +27,21 @@ class ConsolePrettier
 
   def car_params_doc(car)
     <<-CAR_PARAMS
-    #{I18n.t('console_prettier.id').cyan}: #{car['id']}
-    #{I18n.t('console_prettier.make').cyan}: #{car['make']}
-    #{I18n.t('console_prettier.model').cyan}: #{car['model']}
-    #{I18n.t('console_prettier.year').cyan}: #{car['year']}
-    #{I18n.t('console_prettier.odometer').cyan}: #{car['odometer']}
-    #{I18n.t('console_prettier.price').cyan}: #{car['price']}
-    #{I18n.t('console_prettier.description').cyan}: #{car['description']}
-    #{I18n.t('console_prettier.date_added').cyan}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
+    #{I18n.t('models.car.id').cyan}: #{car['id']}
+    #{I18n.t('models.car.make').cyan}: #{car['make']}
+    #{I18n.t('models.car.model').cyan}: #{car['model']}
+    #{I18n.t('models.car.year').cyan}: #{car['year']}
+    #{I18n.t('models.car.odometer').cyan}: #{car['odometer']}
+    #{I18n.t('models.car.price').cyan}: #{car['price']}
+    #{I18n.t('models.car.description').cyan}: #{car['description']}
+    #{I18n.t('models.car.date_added').cyan}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
     CAR_PARAMS
   end
 
   def rows_statistics(statistics)
     [
-      [I18n.t('console_prettier.total_quantity').cyan, statistics[:total_quantity]],
-      [I18n.t('console_prettier.request_quantity').cyan, statistics[:request_quantity]]
+      [I18n.t('models.statistics.total_quantity').cyan, statistics[:total_quantity]],
+      [I18n.t('models.statistics.request_quantity').cyan, statistics[:request_quantity]]
     ]
   end
 
