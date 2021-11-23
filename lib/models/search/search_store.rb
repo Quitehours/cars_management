@@ -9,9 +9,12 @@ class SearchStore
       temp_data = collection_of_searches
       current_search = search_to_hash(search_requirements, statistics)
 
-      # temp_data.push(current_search) unless already_exists?(temp_data, search_requirements)
-      # temp_data = update_searches(temp_data, search_requirements) if already_exists?(temp_data, search_requirements)
-      already_exists?(temp_data, search_requirements) ? temp_data = update_searches(temp_data, search_requirements) : temp_data.push(current_search)
+      if already_exists?(temp_data, search_requirements)
+        temp_data = update_searches(temp_data, search_requirements)
+      else
+        temp_data.push(current_search)
+      end
+
       FileManager.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
     end
 
