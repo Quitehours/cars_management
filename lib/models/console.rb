@@ -22,7 +22,7 @@ class Console
     requirement_output
     search = Search.new(@searched_data)
     output(search)
-    # SearchStore.save(search)
+    SearchStore.save(search)
   end
 
   private
@@ -39,46 +39,6 @@ class Console
   def output(search)
     console_prettier = ConsolePrettier.new
     puts console_prettier.statistics_table(search.statistic)
-    # puts statistic_doc(search.statistic)
-    # puts result_doc
-    # cars = search.call
-    # cars.each { |car| puts car_params_doc(car) }
-  end
-
-  def car_params_doc(car)
-    <<-CAR_PARAMS
-
-    Id: #{car['id']}
-    Make: #{car['make']}
-    Model: #{car['model']}
-    Year: #{car['year']}
-    Odometer: #{car['odometer']}
-    Price: #{car['price']}
-    Description: #{car['description']}
-    Date added: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
-
-    #{'-' * 35}
-    CAR_PARAMS
-  end
-
-  def result_doc
-    <<-RESULTS
-    #{'-' * 35}
-
-    #{I18n.t('console.output_results')}:
-
-    RESULTS
-  end
-
-  def statistic_doc(search)
-    <<-STATISTIC
-    #{'-' * 35}
-
-    #{I18n.t('console.output_statistic')}:
-
-    Total Quantity: #{search[:total_quantity]}
-    Request Quantity: #{search[:request_quantity]}
-
-    STATISTIC
+    puts console_prettier.cars_table(search.call)
   end
 end
