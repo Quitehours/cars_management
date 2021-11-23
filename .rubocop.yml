@@ -1,14 +1,71 @@
-require: rubocop-performance
+    require:
+  - rubocop-md
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-performance
 
 AllCops:
+  TargetRubyVersion: 3.0
   NewCops: enable
 
-Layout/LineLength:
-  Max: 120
+Lint/MissingSuper:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
 
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - public_class_methods
+      - initializer
+      - public_methods
+      - protected_methods
+      - private_methods
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/MultipleDescribes:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 22
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
 Metrics/ParameterLists:
-  Exclude: 
-    - 'lib/models/car/car.rb'
+Exclude: 
+  - 'lib/models/car/car.rb'

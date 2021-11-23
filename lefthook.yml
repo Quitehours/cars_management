@@ -1,0 +1,11 @@
+pre-commit:
+parallel: true
+commands:
+rubocop:
+run: bundle exec rubocop
+brakeman:
+run: bundle exec brakeman -A -k --noskip-vendor
+bundler-leak:
+run: bundle exec bundler-leak
+database_consistency:
+run: bundle exec database_consistency
