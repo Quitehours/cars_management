@@ -46,14 +46,14 @@ class Console
   def car_params_doc(car)
     <<-CAR_PARAMS
 
-    Id: #{car['id']}
-    Make: #{car['make']}
-    Model: #{car['model']}
-    Year: #{car['year']}
-    Odometer: #{car['odometer']}
-    Price: #{car['price']}
-    Description: #{car['description']}
-    Date added: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
+    #{I18n.t('console.car_id')}: #{car['id']}
+    #{I18n.t('console.car_make')}: #{car['make']}
+    #{I18n.t('console.car_model')}: #{car['model']}
+    #{I18n.t('console.car_year')}: #{car['year']}
+    #{I18n.t('console.car_odometer')}: #{car['odometer']}
+    #{I18n.t('console.car_price')}: #{car['price']}
+    #{I18n.t('console.car_description')}: #{car['description']}
+    #{I18n.t('console.car_date_added')}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
 
     #{'-' * 35}
     CAR_PARAMS

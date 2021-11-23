@@ -13,3 +13,11 @@ en:
     output_statistic: Statistic
     statistic_total_quantity: Total Quantity
     statistic_request_quantity: Request Quantity
+    car_id: id 
+    car_make: make
+    car_model: model
+    car_year: year 
+    car_odometer: odometer
+    car_price: price
+    car_description: description
+    car_date_added: date_added
