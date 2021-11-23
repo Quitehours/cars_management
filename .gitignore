@@ -1,7 +1,5 @@
-### Ruby ###
 *.gem
 *.rbc
-/.config
 /coverage/
 /InstalledFiles
 /pkg/
@@ -11,10 +9,11 @@
 /test/version_tmp/
 /tmp/
 
-## Environment normalization:
 /.bundle/
 /vendor/bundle
 /lib/bundler/man/
 
-# Used by dotenv library to load environment variables.
-.env
+.ruby-gemset
+.rvmrc
+
+db.yml

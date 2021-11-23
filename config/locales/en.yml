@@ -1,0 +1,12 @@
+en:
+  console:
+    app_start: Please select search rules.
+    sort_parameter_make: Please choose make
+    sort_parameter_model: Please choose model
+    sort_parameter_year_from: Please choose year_from
+    sort_parameter_year_to: Please choose year_to
+    sort_parameter_price_from: Please choose price_from
+    sort_parameter_price_to: Please choose price_to
+    sort_type:  Please choose sort option (date_added|price)
+    sort_direction:  Please choose sort direction (desc|asc)
+    output_results: Results

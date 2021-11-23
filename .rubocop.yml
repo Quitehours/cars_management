@@ -1,0 +1,14 @@
+require: rubocop-performance
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Exclude: 
+    - 'lib/models/car/car.rb'
