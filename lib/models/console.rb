@@ -19,15 +19,16 @@ class Console
   end
 
   def call
-    requirement_output
-    search = Search.new(@searched_data)
-    output(search)
-    SearchStore.save(search)
+    requirements_output
+    filtred_cars = Search.new(@searched_data).call
+    statistics = Statistics.new(filtred_cars, @searched_data).to_h
+    output(filtred_cars, statistics)
+    SearchStore.save(@searched_data, statistics)
   end
 
   private
 
-  def requirement_output
+  def requirements_output
     puts I18n.t('console.app_start')
 
     SEARCH_REQUIRMENTS.each do |rule, requirement|
@@ -36,9 +37,9 @@ class Console
     end
   end
 
-  def output(search)
+  def output(filtred_cars, statistics)
     console_prettier = ConsolePrettier.new
-    puts console_prettier.statistics_table(search.statistic)
-    puts console_prettier.cars_table(search.call)
+    puts console_prettier.statistics_table(statistics)
+    puts console_prettier.cars_table(filtred_cars)
   end
 end

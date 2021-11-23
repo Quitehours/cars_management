@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CarStorer
-  DB_CARS = ENV['DB_CARS_PATH'] || 'db.yml'
+  DB_CARS = ENV.fetch('DB_CARS', 'db.yml')
 
   class << self
     def save(params)
