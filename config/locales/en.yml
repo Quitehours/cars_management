@@ -1,4 +1,17 @@
 en:
+  models:
+    car:
+      id: ID 
+      make: make
+      model: model
+      year: year 
+      odometer: odometer
+      price: price
+      description: description
+      date_added: date_added 
+    statistics:
+      total_quantity: Total Quantity
+      request_quantity: Request Quantity   
   console:
     app_start: Please select search rules.
     sort_parameter_make: Please choose make
@@ -7,17 +20,8 @@ en:
     sort_parameter_year_to: Please choose year_to
     sort_parameter_price_from: Please choose price_from
     sort_parameter_price_to: Please choose price_to
-    sort_type:  Please choose sort option (date_added|price)
-    sort_direction:  Please choose sort direction (desc|asc)
+    sort_type: Please choose sort option (date_added|price)
+    sort_direction: Please choose sort direction (desc|asc)
     output_results: Results
-    output_statistic: Statistic
-    statistic_total_quantity: Total Quantity
-    statistic_request_quantity: Request Quantity
-    car_id: id 
-    car_make: make
-    car_model: model
-    car_year: year 
-    car_odometer: odometer
-    car_price: price
-    car_description: description
-    car_date_added: date_added
+    output_statistics: Statistics
+   

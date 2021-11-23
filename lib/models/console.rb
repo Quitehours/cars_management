@@ -46,14 +46,14 @@ class Console
   def car_params_doc(car)
     <<-CAR_PARAMS
 
-    #{I18n.t('console.car_id')}: #{car['id']}
-    #{I18n.t('console.car_make')}: #{car['make']}
-    #{I18n.t('console.car_model')}: #{car['model']}
-    #{I18n.t('console.car_year')}: #{car['year']}
-    #{I18n.t('console.car_odometer')}: #{car['odometer']}
-    #{I18n.t('console.car_price')}: #{car['price']}
-    #{I18n.t('console.car_description')}: #{car['description']}
-    #{I18n.t('console.car_date_added')}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
+    #{I18n.t('models.car.id')}: #{car['id']}
+    #{I18n.t('models.car.make')}: #{car['make']}
+    #{I18n.t('models.car.model')}: #{car['model']}
+    #{I18n.t('models.car.year')}: #{car['year']}
+    #{I18n.t('models.car.odometer')}: #{car['odometer']}
+    #{I18n.t('models.car.price')}: #{car['price']}
+    #{I18n.t('models.car.description')}: #{car['description']}
+    #{I18n.t('models.car.date_added')}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
 
     #{'-' * 35}
     CAR_PARAMS
@@ -69,14 +69,14 @@ class Console
   end
 
   def statistic_doc(search)
-    <<-STATISTIC
+    <<-STATISTICS
     #{'-' * 35}
 
-    #{I18n.t('console.output_statistic')}:
+    #{I18n.t('console.output_statistics')}:
 
-    #{I18n.t('console.statistic_total_quantity')}: #{search[:total_quantity]}
-    #{I18n.t('console.statistic_request_quantity')}: #{search[:request_quantity]}
+    #{I18n.t('models.statistics.total_quantity')}: #{search[:total_quantity]}
+    #{I18n.t('models.statistics.request_quantity')}: #{search[:request_quantity]}
 
-    STATISTIC
+    STATISTICS
   end
 end
