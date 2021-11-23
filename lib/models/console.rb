@@ -19,15 +19,16 @@ class Console
   end
 
   def call
-    requirement_output
-    search = Search.new(@searched_data)
-    output(search)
-    SearchStore.save(search)
+    requirements_output
+    filtred_cars = Search.new(@searched_data).call
+    statistics = Statistics.new(filtred_cars, @searched_data).to_h
+    output(filtred_cars, statistics)
+    SearchStore.save(@searched_data, statistics)
   end
 
   private
 
-  def requirement_output
+  def requirements_output
     puts I18n.t('console.app_start')
 
     SEARCH_REQUIRMENTS.each do |rule, requirement|
@@ -36,10 +37,9 @@ class Console
     end
   end
 
-  def output(search)
-    puts statistics_doc(search.statistics)
+  def output(cars, statistics)
+    puts statistics_doc(statistics)
     puts result_doc
-    cars = search.call
     cars.each { |car| puts car_params_doc(car) }
   end
 
@@ -68,14 +68,14 @@ class Console
     RESULTS
   end
 
-  def statistics_doc(search)
+  def statistics_doc(statistics)
     <<-STATISTICS
     #{'-' * 35}
 
     #{I18n.t('console.output_statistics')}:
 
-    #{I18n.t('models.statistics.total_quantity')}: #{search[:total_quantity]}
-    #{I18n.t('models.statistics.request_quantity')}: #{search[:request_quantity]}
+    #{I18n.t('models.statistics.total_quantity')}: #{statistics[:total_quantity]}
+    #{I18n.t('models.statistics.request_quantity')}: #{statistics[:request_quantity]}
 
     STATISTICS
   end

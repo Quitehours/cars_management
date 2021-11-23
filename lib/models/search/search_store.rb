@@ -2,41 +2,40 @@
 
 class SearchStore
   DB_SEARCHES = ENV.fetch('DB_SEARCHES', 'search.yml')
-  ADD_IDENTICAL_REQUEST = 1
+  SAME_REQUEST = 1
 
   class << self
-    def save(current_search)
+    def save(search_requirements, statistics)
       temp_data = collection_of_searches
+      current_search = search_to_hash(search_requirements, statistics)
 
-      temp_data = update_request_quantity(temp_data, current_search.to_h) if already_exists?(temp_data,
-                                                                                             current_search.to_h)
-      temp_data.push(current_search.to_h) unless already_exists?(temp_data, current_search.to_h)
-
+      # temp_data.push(current_search) unless already_exists?(temp_data, search_requirements)
+      # temp_data = update_searches(temp_data, search_requirements) if already_exists?(temp_data, search_requirements)
+      already_exists?(temp_data, search_requirements) ? temp_data = update_searches(temp_data, search_requirements) : temp_data.push(current_search)
       FileManager.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
     end
 
     private
 
+    def update_searches(searches, search_requirements)
+      searches.each do |search|
+        search[:statistics][:request_quantity] += SAME_REQUEST if search[:search_requirements] == search_requirements
+      end
+    end
+
+    def search_to_hash(search_requirements, statistics)
+      {
+        search_requirements: search_requirements,
+        statistics: statistics
+      }
+    end
+
     def collection_of_searches
       FileManager.read_from_yaml(file_path: DB_SEARCHES)
     end
 
-    def update_request_quantity(searches, current_search)
-      searches.each do |search|
-        next unless search[:search_rules] == current_search[:search_rules] &&
-                    search[:sort_rules] == current_search[:sort_rules] &&
-                    search[:statistics][:total_quantity] == current_search[:statistics][:total_quantity]
-
-        search[:statistics][:request_quantity] += ADD_IDENTICAL_REQUEST
-      end
-    end
-
-    def already_exists?(searches, current_search)
-      searches.any? do |search|
-        search[:search_rules] == current_search[:search_rules] &&
-          search[:sort_rules] == current_search[:sort_rules] &&
-          search[:statistics][:total_quantity] == current_search[:statistics][:total_quantity]
-      end
+    def already_exists?(searches, search_requirements)
+      searches.any? { |search| search[:search_requirements] == search_requirements }
     end
   end
 end
