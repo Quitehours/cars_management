@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Statistics
-  attr_reader :total_quantity, :request_quantity, :search_requirements
-
   FIRST_SEARCH = 1
 
   def initialize(cars, search_requirements)
