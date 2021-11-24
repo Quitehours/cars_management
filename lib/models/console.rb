@@ -20,10 +20,11 @@ class Console
 
   def call
     requirements_output
-    filtred_cars = Search.new(@searched_data).call
-    statistics = Statistics.new(filtred_cars, @searched_data).to_h
-    output(filtred_cars, statistics)
-    SearchStore.save(@searched_data, statistics)
+    total_cars = Search.new(@searched_data).call
+    total_quantity = total_cars.length
+    total_requests = Statistics::SameTotalRequests.new(@searched_data).request_quantity
+    output(total_cars, total_requests, total_quantity)
+    SearchStore.save(@searched_data, total_requests, total_quantity)
   end
 
   private
@@ -37,13 +38,13 @@ class Console
     end
   end
 
-  def output(cars, statistics)
-    puts statistics_doc(statistics)
-    puts result_doc
-    cars.each { |car| puts car_params_doc(car) }
+  def output(total_cars, total_requests, total_quantity)
+    puts statistics_string(total_requests, total_quantity)
+    puts result_string
+    total_cars.each { |car| puts car_params_string(car) }
   end
 
-  def car_params_doc(car)
+  def car_params_string(car)
     <<-CAR_PARAMS
 
     #{I18n.t('models.car.id')}: #{car['id']}
@@ -59,7 +60,7 @@ class Console
     CAR_PARAMS
   end
 
-  def result_doc
+  def result_string
     <<-RESULTS
     #{'-' * 35}
 
@@ -68,14 +69,14 @@ class Console
     RESULTS
   end
 
-  def statistics_doc(statistics)
+  def statistics_string(total_requests, total_quantity)
     <<-STATISTICS
     #{'-' * 35}
 
     #{I18n.t('console.output_statistics')}:
 
-    #{I18n.t('models.statistics.total_quantity')}: #{statistics[:total_quantity]}
-    #{I18n.t('models.statistics.request_quantity')}: #{statistics[:request_quantity]}
+    #{I18n.t('models.statistics.total_quantity')}: #{total_quantity}
+    #{I18n.t('models.statistics.request_quantity')}: #{total_requests}
 
     STATISTICS
   end
