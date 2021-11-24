@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TransformatingValues
+class TransformingValues
   attr_reader :transform_search_rules, :transform_sort_rules
 
   SORT_TYPE_PRICE = 'price'

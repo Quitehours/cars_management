@@ -19,15 +19,17 @@ class Console
   end
 
   def call
-    requirement_output
-
-    search = Search.new(@searched_data).call
-    cars_list_output(search)
+    requirements_output
+    total_cars = Search.new(@searched_data).call
+    total_quantity = total_cars.length
+    total_requests = Statistics::SameTotalRequests.new(@searched_data).request_quantity
+    output(total_cars, total_requests, total_quantity)
+    SearchStore.save(@searched_data, total_quantity, total_requests)
   end
 
   private
 
-  def requirement_output
+  def requirements_output
     puts I18n.t('console.app_start')
 
     SEARCH_REQUIRMENTS.each do |rule, requirement|
@@ -36,33 +38,46 @@ class Console
     end
   end
 
-  def cars_list_output(list_cars)
-    puts result_doc
-
-    list_cars.each { |car| puts car_params_doc(car) }
+  def output(total_cars, total_requests, total_quantity)
+    puts statistics_string(total_requests, total_quantity)
+    puts result_string
+    total_cars.each { |car| puts car_params_string(car) }
   end
 
-  def car_params_doc(car)
+  def car_params_string(car)
     <<-CAR_PARAMS
+
+    #{I18n.t('models.car.id')}: #{car['id']}
+    #{I18n.t('models.car.make')}: #{car['make']}
+    #{I18n.t('models.car.model')}: #{car['model']}
+    #{I18n.t('models.car.year')}: #{car['year']}
+    #{I18n.t('models.car.odometer')}: #{car['odometer']}
+    #{I18n.t('models.car.price')}: #{car['price']}
+    #{I18n.t('models.car.description')}: #{car['description']}
+    #{I18n.t('models.car.date_added')}: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
+
     #{'-' * 35}
-
-    Id: #{car['id']}
-    Make: #{car['make']}
-    Model: #{car['model']}
-    Year: #{car['year']}
-    Odometer: #{car['odometer']}
-    Price: #{car['price']}
-    Description: #{car['description']}
-    Date added: #{car['date_added'].strftime(Car::DEFAULT_TYPE_DATE)}
-
     CAR_PARAMS
   end
 
-  def result_doc
+  def result_string
     <<-RESULTS
+    #{'-' * 35}
 
     #{I18n.t('console.output_results')}:
 
     RESULTS
+  end
+
+  def statistics_string(total_requests, total_quantity)
+    <<-STATISTICS
+    #{'-' * 35}
+
+    #{I18n.t('console.output_statistics')}:
+
+    #{I18n.t('models.statistics.total_quantity')}: #{total_quantity}
+    #{I18n.t('models.statistics.request_quantity')}: #{total_requests}
+
+    STATISTICS
   end
 end

@@ -9,22 +9,23 @@ class Search
   end
 
   def call
-    cars = receive_list_cars
-    transform_rules = transformating_values(@search_rules, @sort_rules, cars)
-    filtering_list_cars(transform_rules, cars)
+    cars = collection_of_cars
+    rules = transforming_values(@search_rules, @sort_rules, cars)
+
+    filtering_list_cars(cars, rules)
   end
 
   private
 
-  def receive_list_cars
+  def collection_of_cars
     FileManager.read_from_yaml(file_path: CarStorer::DB_CARS)
   end
 
-  def filtering_list_cars(rules, cars)
+  def filtering_list_cars(cars, rules)
     FilterCars.new(cars).call(rules)
   end
 
-  def transformating_values(search_rules, sort_rules, data)
-    TransformatingValues.new(search_rules, sort_rules, data)
+  def transforming_values(search_rules, sort_rules, data)
+    TransformingValues.new(search_rules, sort_rules, data)
   end
 end
