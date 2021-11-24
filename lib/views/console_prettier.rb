@@ -1,15 +1,30 @@
 # frozen_string_literal: true
 
-module ConsolePrettier
-  class Table
+module Views
+  class BaseTable
+    def initialize(rows, title, separator)
+      self.rows = rows
+      @title = title
+      @separator = separator
+    end
+
+    def call
+      table
+    end
+
+    def rows=(_value)
+      reise NotImplementedError, 'Method not implemented yet'
+    end
+    
     private
 
-    def table(rows:, title:, separator:)
+
+    def table
       Terminal::Table.new do |table|
-        table.title = title
-        table.rows = rows
+        table.title = @title
+        table.rows = @rows
         table.align_column(0, :center)
-        table.style = { width: 100, padding_left: 3, border_x: '=', border_i: 'x', all_separators: separator }
+        table.style = { width: 100, padding_left: 3, border_x: '=', border_i: 'x', all_separators: @separator }
       end
     end
   end
@@ -34,8 +49,7 @@ module ConsolePrettier
 
   class TableTotalCars < Table
     def call(collection_of_cars)
-      rows = []
-      collection_of_cars.each_with_index { |car, index| rows.push(rows_cars(index, car)) }
+      collection_of_cars.map_with_index { |car, index| rows.push(rows_cars(index, car)) }
       title = I18n.t('console_prettier.results').yellow
 
       table(rows: rows, title: title, separator: true)
