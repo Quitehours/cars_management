@@ -10,7 +10,7 @@ class Search
 
   def call
     cars = collection_of_cars
-    rules = transformating_values(@search_rules, @sort_rules, cars)
+    rules = transforming_values(@search_rules, @sort_rules, cars)
 
     filtering_list_cars(cars, rules)
   end
@@ -25,7 +25,7 @@ class Search
     FilterCars.new(cars).call(rules)
   end
 
-  def transformating_values(search_rules, sort_rules, data)
-    TransformatingValues.new(search_rules, sort_rules, data)
+  def transforming_values(search_rules, sort_rules, data)
+    TransformingValues.new(search_rules, sort_rules, data)
   end
 end
