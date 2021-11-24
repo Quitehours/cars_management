@@ -2,7 +2,6 @@
 
 module Statistics
   class SameTotalRequests
-    THE_FIRST_REQUEST = 1
 
     def initialize(search_requirements)
       @search_requirements = search_requirements
@@ -10,7 +9,7 @@ module Statistics
 
     def request_quantity
       result = collection_of_searches.find { |search| search[:search_requirements] == @search_requirements }
-      result.nil? ? THE_FIRST_REQUEST : result[:statistics][:request_quantity]
+      result.nil? ? 1 : result[:statistics][:request_quantity]
     end
 
     private
