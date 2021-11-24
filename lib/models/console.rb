@@ -38,9 +38,8 @@ class Console
     end
   end
 
-  def output(filtred_cars, statistics)
-    console_prettier = ConsolePrettier.new
-    puts console_prettier.statistics_table(statistics)
-    puts console_prettier.cars_table(filtred_cars)
+  def output(total_cars, total_quantity, total_requests)
+    puts ConsolePrettier::TableStatistic.new.call(total_quantity, total_requests)
+    puts ConsolePrettier::TableTotalCars.new.call(total_cars)
   end
 end
