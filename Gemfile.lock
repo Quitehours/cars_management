@@ -57,8 +57,6 @@ GEM
       rubocop-ast (>= 0.4.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.6.0)
-      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     solargraph (0.44.0)
       backport (~> 1.2)
@@ -97,7 +95,6 @@ DEPENDENCIES
   rubocop-md (~> 1.0)
   rubocop-performance (~> 1.11)
   rubocop-rake (~> 0.6.0)
-  rubocop-rspec (~> 2.6)
   solargraph (~> 0.44.0)
   terminal-table (~> 3.0)
 

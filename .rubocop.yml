@@ -1,7 +1,6 @@
 require:
   - rubocop-md
   - rubocop-rake
-  - rubocop-rspec
   - rubocop-performance
 
 AllCops:
@@ -22,6 +21,9 @@ Style/RegexpLiteral:
 
 Layout/LineLength:
   Max: 120
+  Exclude: 
+    - 'lib/models/car/car_storer.rb'
+    - 'lib/models/car/car.rb'
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -45,27 +47,12 @@ Layout/ClassStructure:
       - protected_methods
       - private_methods
 
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-RSpec/MultipleDescribes:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Max: 22
-
-RSpec/MessageSpies:
-  EnforcedStyle: receive
-
-RSpec/MessageChain:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Max: 5
-
 Metrics/ParameterLists:
   Exclude: 
     - 'lib/models/car/car.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/models/transformating_values.rb'
+    - 'lib/models/search/filter_cars.rb'
+    - 'lib/models/console_prettier.rb'
