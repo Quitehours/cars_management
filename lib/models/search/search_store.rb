@@ -2,7 +2,6 @@
 
 class SearchStore
   DB_SEARCHES = ENV.fetch('DB_SEARCHES', 'search.yml')
-  SAME_REQUEST = 1
 
   class << self
     def save(search_requirements, statistics)
@@ -22,7 +21,7 @@ class SearchStore
 
     def update_searches(searches, search_requirements)
       searches.each do |search|
-        search[:statistics][:request_quantity] += SAME_REQUEST if search[:search_requirements] == search_requirements
+        search[:statistics][:request_quantity] += 1 if search[:search_requirements] == search_requirements
       end
     end
 
