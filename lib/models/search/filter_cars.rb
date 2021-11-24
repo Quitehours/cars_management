@@ -29,7 +29,7 @@ class FilterCars
   end
 
   def sorting(sort_type, sort_direction)
-    return @cars.sort_by! { |car| car[sort_type] } if sort_direction == TransformatingValues::SORT_DIRECTION_ASC
+    return @cars.sort_by! { |car| car[sort_type] } if sort_direction == TransformingValues::SORT_DIRECTION_ASC
 
     @cars.sort_by! { |car| car[sort_type] }.reverse
   end

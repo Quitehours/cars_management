@@ -20,10 +20,11 @@ class Console
 
   def call
     requirements_output
-    filtred_cars = Search.new(@searched_data).call
-    statistics = Statistics.new(filtred_cars, @searched_data).to_h
-    output(filtred_cars, statistics)
-    SearchStore.save(@searched_data, statistics)
+    total_cars = Search.new(@searched_data).call
+    total_quantity = total_cars.length
+    total_requests = Statistics::SameTotalRequests.new(@searched_data).request_quantity
+    output(total_cars, total_requests, total_quantity)
+    SearchStore.save(@searched_data, total_quantity, total_requests)
   end
 
   private
