@@ -29,43 +29,43 @@ Layout/MultilineMethodCallIndentation:
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-# Layout/ClassStructure:
-#   Enabled: true
-#   Categories:
-#     module_inclusion:
-#       - include
-#       - prepend
-#       - extend
-#   ExpectedOrder:
-#       - module_inclusion
-#       - constants
-#       - public_class_methods
-#       - initializer
-#       - public_methods
-#       - protected_methods
-#       - private_methods
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - public_class_methods
+      - initializer
+      - public_methods
+      - protected_methods
+      - private_methods
 
-# RSpec/MultipleMemoizedHelpers:
-#   Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
 
-# RSpec/MultipleDescribes:
-#   Enabled: false
+RSpec/MultipleDescribes:
+  Enabled: false
 
-# RSpec/MultipleExpectations:
-#   Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
 
-# RSpec/ExampleLength:
-#   Max: 22
+RSpec/ExampleLength:
+  Max: 22
 
-# RSpec/MessageSpies:
-#   EnforcedStyle: receive
+RSpec/MessageSpies:
+  EnforcedStyle: receive
 
-# RSpec/MessageChain:
-#   Enabled: false
+RSpec/MessageChain:
+  Enabled: false
 
-# RSpec/NestedGroups:
-#   Max: 5
+RSpec/NestedGroups:
+  Max: 5
 
-# Metrics/ParameterLists:
-# Exclude: 
-#   - 'lib/models/car/car.rb'
+Metrics/ParameterLists:
+  Exclude: 
+    - 'lib/models/car/car.rb'
