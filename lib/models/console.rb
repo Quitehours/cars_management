@@ -24,7 +24,7 @@ class Console
     total_quantity = total_cars.length
     total_requests = Statistics::SameTotalRequests.new(@searched_data).request_quantity
     output(total_cars, total_requests, total_quantity)
-    SearchStore.save(@searched_data, total_requests, total_quantity)
+    SearchStore.save(@searched_data, total_quantity, total_requests)
   end
 
   private
