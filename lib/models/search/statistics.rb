@@ -2,7 +2,6 @@
 
 module Statistics
   class SameTotalRequests
-
     def initialize(search_requirements)
       @search_requirements = search_requirements
     end

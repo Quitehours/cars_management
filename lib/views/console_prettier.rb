@@ -31,7 +31,7 @@ module ConsolePrettier
       ]
     end
   end
-  
+
   class TableTotalCars < Table
     def call(collection_of_cars)
       rows = []
