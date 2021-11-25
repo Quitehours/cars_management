@@ -51,6 +51,7 @@ Metrics/ParameterLists:
 
 Metrics/AbcSize:
   Exclude:
-    - 'lib/models/transformating_values.rb'
+    - 'lib/models/transforming_values.rb'
     - 'lib/models/search/filter_cars.rb'
     - 'lib/models/console_prettier.rb'
+    - 'lib/views/cars_table.rb'
