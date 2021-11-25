@@ -23,7 +23,7 @@ class Console
     total_cars = Search.new(@searched_data).call
     total_quantity = total_cars.length
     total_requests = Statistics::SameTotalRequests.new(@searched_data).request_quantity
-    output(total_cars, total_requests, total_quantity)
+    output(total_cars, { requests_quantity: total_quantity, total_quantity: total_quantity })
     SearchStore.save(@searched_data, total_quantity, total_requests)
   end
 
@@ -38,8 +38,8 @@ class Console
     end
   end
 
-  def output(total_cars, total_quantity, total_requests)
-    puts ConsolePrettier::TableStatistic.new.call(total_quantity, total_requests)
-    puts ConsolePrettier::TableTotalCars.new.call(total_cars)
+  def output(total_cars, statistics)
+    puts Lib::Views::StatisticsTable.new(statistics, I18n.t('console_prettier.statistics'), false).call
+    puts Lib::Views::TotalCarsTable.new(total_cars, I18n.t('console_prettier.results'), true).call
   end
 end

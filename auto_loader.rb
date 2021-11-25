@@ -9,9 +9,10 @@ require 'i18n'
 require 'terminal-table'
 require 'colorize'
 require 'colorized_string'
+
 require_relative './config/i18n'
-require_relative './lib/models/console'
-require_relative './lib/views/console_prettier'
+
+
 require_relative './lib/models/transforming_values'
 require_relative './lib/models/car/car_storer'
 require_relative './lib/models/car/car'
@@ -19,4 +20,10 @@ require_relative './lib/models/search/search'
 require_relative './lib/models/search/search_store'
 require_relative './lib/models/search/statistics'
 require_relative './lib/models/search/filter_cars'
+require_relative './lib/models/console'
+
 require_relative './lib/helpers/file_manager'
+
+require_relative './lib/views/base_table'
+require_relative './lib/views/total_cars_table'
+require_relative './lib/views/statistics_table'
