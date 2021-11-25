@@ -2,5 +2,5 @@
 
 require_relative 'auto_loader'
 
-console = Console.new
+console = Models::Console.new
 console.call
