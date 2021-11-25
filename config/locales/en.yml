@@ -2,13 +2,13 @@ en:
   models:
     car:
       id: ID 
-      make: make
-      model: model
-      year: year 
-      odometer: odometer
-      price: price
-      description: description
-      date_added: date_added
+      make: Make
+      model: Model
+      year: Year 
+      odometer: Odometer
+      price: Price
+      description: Description
+      date_added: Date_added
     statistics:
       total_quantity: Total Quantity
       request_quantity: Request Quantity   
@@ -25,4 +25,3 @@ en:
   console_prettier:
     statistics: Statistics
     results: Results
-   

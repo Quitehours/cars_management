@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     rubocop:
-      run: bundle exec rubocop -A
+      run: bundle exec rubocop -a
     bundler-leak:
       run: bundle exec bundler-leak
     bundler-audit:
