@@ -10,7 +10,8 @@ module Models
       DEFAULT_ODOMETER = 0
       DEFAULT_TYPE_DATE = '%d/%m/%y'
 
-      def initialize(make: '', model: '', year: DEFAULT_YEAR, odometer: DEFAULT_ODOMETER, price: DEFAULT_PRICE, description: '')
+      def initialize(make: '', model: '', year: DEFAULT_YEAR, odometer: DEFAULT_ODOMETER, price: DEFAULT_PRICE,
+                     description: '')
         @id = SecureRandom.uuid
         @make = make
         @model = model

@@ -1,0 +1,23 @@
+name: Ruby-CI/CD
+
+on: [push]
+
+jobs:
+  lintering:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to branch
+        uses: actions/checkout@v2
+      
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true
+        
+      - name: Install ruby gems
+        run: bundle install
+
+      - name: Run lintering
+        run: bundle exec lefthook run pre-commit
