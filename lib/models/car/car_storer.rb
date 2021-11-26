@@ -7,9 +7,7 @@ module Models
 
       class << self
         def save(params)
-          new_car = Car.new(make: params[:make], model: params[:model], year: params[:year],
-                            odometer: params[:odometer], price: params[:price], description: params[:description])
-
+          new_car = Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
           list_cars = FileManager.read_from_yaml(file_path: DB_CARS)
 
           list_cars.push(new_car.to_h)
