@@ -19,9 +19,6 @@ Style/RegexpLiteral:
 
 Layout/LineLength:
   Max: 120
-  Exclude: 
-    - 'lib/models/car/car_storer.rb'
-    - 'lib/models/car/car.rb'
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -41,17 +38,10 @@ Layout/ClassStructure:
       - constants
       - public_class_methods
       - initializer
-      - public_methods
-      - protected_methods
-      - private_methods
 
 Metrics/ParameterLists:
   Exclude: 
     - 'lib/models/car/car.rb'
 
 Metrics/AbcSize:
-  Exclude:
-    - 'lib/models/transforming_values.rb'
-    - 'lib/models/search/filter_cars.rb'
-    - 'lib/models/console_prettier.rb'
-    - 'lib/views/cars_table.rb'
+  Max: 25
