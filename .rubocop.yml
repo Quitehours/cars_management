@@ -11,12 +11,6 @@ Lint/MissingSuper:
 Style/Documentation:
   Enabled: false
 
-Style/ParallelAssignment:
-  Enabled: false
-
-Style/RegexpLiteral:
-  Enabled: false
-
 Layout/LineLength:
   Max: 120
 
