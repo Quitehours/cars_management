@@ -24,11 +24,11 @@ module Models
       end
 
       def filtering_list_cars(cars, rules)
-        FilterCars.new(cars).call(rules)
+        Models::Search::FilterCars.new(cars).call(rules)
       end
 
       def transforming_values(search_rules, sort_rules, data)
-        TransformingValues.new(search_rules, sort_rules, data)
+        Models::TransformingValues.new(search_rules, sort_rules, data)
       end
     end
   end

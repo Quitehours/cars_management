@@ -13,7 +13,8 @@ en:
       total_quantity: Total Quantity
       request_quantity: Request Quantity   
   console:
-    app_start: Please select search rules.
+    enter_option: Please enter option
+    sort_start: Please select search rules.
     sort_parameter_make: Please choose make
     sort_parameter_model: Please choose model
     sort_parameter_year_from: Please choose year_from
@@ -22,6 +23,13 @@ en:
     sort_parameter_price_to: Please choose price_to
     sort_type:  Please choose sort option (date_added|price)
     sort_direction:  Please choose sort direction (desc|asc)
-  console_prettier:
-    statistics: Statistics
-    results: Results
+  views:
+    table:
+      statistics: Statistics
+      results: Results
+      menu: Menu
+    menu:
+      search_a_car: Search a car
+      search_all_cars: Search all cars
+      help: Help
+      exit: Exit

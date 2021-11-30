@@ -23,6 +23,8 @@ require_relative './lib/models/console'
 
 require_relative './lib/helpers/file_manager'
 
-require_relative './lib/views/base_table'
-require_relative './lib/views/cars_table'
-require_relative './lib/views/statistics_table'
+require_relative './lib/views/table/base_table'
+require_relative './lib/views/table/cars_table'
+require_relative './lib/views/table/statistics_table'
+require_relative './lib/views/table/menu_table'
+require_relative './lib/views/menu'
