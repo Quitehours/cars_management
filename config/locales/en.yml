@@ -1,4 +1,26 @@
 en:
+  app:
+    models:
+      menu_options:
+        exit_option:
+          name: Exit
+          description: This option closing application
+        help_option:
+          name: Help
+          description: This option has instructions for using the application
+        search_a_car_option:
+          name: Search a car
+          description:
+        search_all_cars_option:
+          name: Search all cars
+          description:
+        error: has not implemented method
+    view:
+      table:
+        help: Help
+      menu_view:
+        choice: Please select(Enter a number)
+        error: Error! Enter the number of the menu section.
   models:
     car:
       id: ID 

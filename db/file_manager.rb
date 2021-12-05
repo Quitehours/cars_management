@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Helpers
+module Db
   class FileManager
-    WHITELIST_CLASSES = [Symbol, Time, Models::Console, Models::Car::CarStorer, Models::Car::Car].freeze
+    WHITELIST_CLASSES = [Symbol, Time, Lib::Models::Console, App::Models::Car::CarStorer, App::Models::Car::Car].freeze
 
     class << self
       def write_to_yaml(file_path:, data:)
