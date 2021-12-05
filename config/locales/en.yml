@@ -10,10 +10,10 @@ en:
           description: This option has instructions for using the application
         search_a_car_option:
           name: Search a car
-          description:
+          description: Starts a search by list cars
         search_all_cars_option:
           name: Search all cars
-          description:
+          description: Returns a list of all cars  
         error: has not implemented method
     view:
       table:

@@ -15,7 +15,7 @@ module App
         end
 
         def width
-          100
+          150
         end
 
         def separator
