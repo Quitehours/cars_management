@@ -21,8 +21,10 @@ module Lib
       end
 
       def call
-        puts App::Controllers::MenuController.new.output_table
-        App::Controllers::MenuController.new.call
+        loop do
+          puts App::Controllers::MenuController.new.output_table
+          App::Controllers::MenuController.new.call
+        end
 
         # menu_options_output
         # menu_handler

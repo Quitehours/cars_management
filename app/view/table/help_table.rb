@@ -11,7 +11,7 @@ module App
         end
 
         def rows
-          @options.map { |option| [option.new.name, option.new.description] }
+          @options.map { |option| [option.new.name.cyan, option.new.description] }
         end
 
         def width
