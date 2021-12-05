@@ -12,8 +12,7 @@ module App
           I18n.t('app.models.menu_options.search_all_cars_option.name')
         end
 
-        def description
-        end
+        def description; end
       end
     end
   end
