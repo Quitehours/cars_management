@@ -7,13 +7,13 @@ module App
         private
 
         def title
-          I18n.t('views.table.statistics').yellow
+          I18n.t('app.view.table.statistics.statistics').yellow
         end
 
         def rows
           [
-            [I18n.t('models.statistics.total_quantity').cyan, @options[:total_quantity]],
-            [I18n.t('models.statistics.request_quantity').cyan, @options[:requests_quantity]]
+            [I18n.t('app.view.table.statistics.total_quantity').cyan, @options[:total_quantity]],
+            [I18n.t('app.view.table.statistics.request_quantity').cyan, @options[:requests_quantity]]
           ]
         end
 

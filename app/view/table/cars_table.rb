@@ -7,7 +7,7 @@ module App
         private
 
         def title
-          I18n.t('views.table.results').yellow
+          I18n.t('app.view.table.cars.results').yellow
         end
 
         def rows
@@ -18,16 +18,20 @@ module App
           true
         end
 
+        def width
+          100
+        end
+
         def car_params_string(car)
           <<~CAR_PARAMS
-            #{I18n.t('models.car.id').cyan}: #{car['id']}
-            #{I18n.t('models.car.make').cyan}: #{car['make']}
-            #{I18n.t('models.car.model').cyan}: #{car['model']}
-            #{I18n.t('models.car.year').cyan}: #{car['year']}
-            #{I18n.t('models.car.odometer').cyan}: #{car['odometer']}
-            #{I18n.t('models.car.price').cyan}: #{car['price']}
-            #{I18n.t('models.car.description').cyan}: #{car['description']}
-            #{I18n.t('models.car.date_added').cyan}: #{car['date_added'].strftime(Models::Car::Car::DEFAULT_TYPE_DATE)}
+            #{I18n.t('app.models.car.id').cyan}: #{car['id']}
+            #{I18n.t('app.models.car.make').cyan}: #{car['make']}
+            #{I18n.t('app.models.car.model').cyan}: #{car['model']}
+            #{I18n.t('app.models.car.year').cyan}: #{car['year']}
+            #{I18n.t('app.models.car.odometer').cyan}: #{car['odometer']}
+            #{I18n.t('app.models.car.price').cyan}: #{car['price']}
+            #{I18n.t('app.models.car.description').cyan}: #{car['description']}
+            #{I18n.t('app.models.car.date_added').cyan}: #{car['date_added'].strftime(Models::Car::Car::DEFAULT_TYPE_DATE)}
           CAR_PARAMS
         end
       end

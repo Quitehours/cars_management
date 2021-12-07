@@ -5,7 +5,7 @@ module App
     module MenuOptions
       class SearchAllCarsOption < OptionBase
         def ranking
-          4
+          3
         end
 
         def name
@@ -14,6 +14,10 @@ module App
 
         def description
           I18n.t('app.models.menu_options.search_all_cars_option.description')
+        end
+
+        def handler
+          App::Controllers::SearchController.new.search_all_cars
         end
       end
     end

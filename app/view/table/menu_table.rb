@@ -7,7 +7,7 @@ module App
         private
 
         def title
-          I18n.t('views.table.menu').yellow
+          I18n.t('app.view.table.menu').yellow
         end
 
         def rows

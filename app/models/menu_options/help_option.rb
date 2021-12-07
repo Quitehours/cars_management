@@ -17,7 +17,7 @@ module App
         end
 
         def handler
-          puts App::Controllers::MenuController.new.output_description_options # TODO: refactoring
+          App::Controllers::MenuController.new.show_descriptions_menu_options
         end
       end
     end

@@ -22,21 +22,15 @@ module App
 
         def to_h
           {
-            'id' => @id,
-            'make' => @make,
-            'model' => @model,
-            'year' => @year,
-            'odometer' => @odometer,
-            'price' => @price,
-            'description' => @description,
-            'data_added' => @date_added
+            I18n.t('app.models.car.id') => @id,
+            I18n.t('app.models.car.make') => @make,
+            I18n.t('app.models.car.model') => @model,
+            I18n.t('app.models.car.year') => @year,
+            I18n.t('app.models.car.odometer') => @odometer,
+            I18n.t('app.models.car.price') => @price,
+            I18n.t('app.models.car.description') => @description,
+            I18n.t('app.models.car.date_added') => @date_added
           }
-        end
-
-        class << self
-          def collection_of_cars
-            FileManager.read_from_yaml(file_path: DB_CARS)
-          end
         end
       end
     end
