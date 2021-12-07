@@ -4,8 +4,9 @@ module Lib
   module Models
     class Console
       def call
+        puts start_app_string
+        console_assistent
         loop do
-          start_app_string
           App::Controllers::MenuController.new.menu
           console_assistent
         end
@@ -18,7 +19,9 @@ module Lib
         system `clear`
       end
 
-      def start_app_string; end
+      def start_app_string
+        I18n.t('lib.console.welcome_to_app')
+      end
     end
   end
 end

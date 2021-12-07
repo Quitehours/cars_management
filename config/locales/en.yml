@@ -48,3 +48,6 @@ en:
         sort_parameter_price_to: Please choose price_to
         sort_type:  Please choose sort option (date_added|price)
         sort_direction:  Please choose sort direction (desc|asc)
+  lib:
+    console:
+      welcome_to_app: "Hi, these app analog_auto.ria! Find your dream Car!\nPlease, enter any key!"
