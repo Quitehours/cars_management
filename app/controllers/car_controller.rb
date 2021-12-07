@@ -7,7 +7,7 @@ module App
         @car = App::Models::Car::Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
       end
 
-      def collections_cars
+      def collection_cars
         @cars = App::Models::Car::Car.new
       end
 
