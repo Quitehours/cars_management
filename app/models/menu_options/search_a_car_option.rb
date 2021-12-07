@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 
-module App
-  module Models
-    module MenuOptions
-      class SearchACarOption < OptionBase
-        def ranking
-          4
-        end
+module Models
+  module MenuOptions
+    class SearchACarOption < OptionBase
+      def ranking
+        4
+      end
 
-        def name
-          I18n.t('app.models.menu_options.search_a_car_option.name')
-        end
+      def name
+        I18n.t('app.models.menu_options.search_a_car_option.name')
+      end
 
-        def description
-          I18n.t('app.models.menu_options.search_a_car_option.description')
-        end
+      def description
+        I18n.t('app.models.menu_options.search_a_car_option.description')
+      end
 
-        def handler
-          App::Controllers::SearchController.new.search_a_car
-        end
+      def handler
+        Controllers::SearchController.new.search_a_car
       end
     end
   end
