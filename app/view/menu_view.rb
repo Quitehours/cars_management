@@ -15,13 +15,11 @@ module App
         enter_option_string
         input_option = gets.chomp.to_i
 
-        begin
-          options.map.with_index(1) do |option, index|
-            return option.new.handler if index == input_option
-          end
-        rescue StandardError # TODO: add handler exceptions for invalid menu options
-          raise StandardError, I18n.t('app.view.menu_view.error')
+        options.map.with_index(1) do |option, index|
+          return option.new.handler if index == input_option
         end
+
+        puts I18n.t('app.view.menu_view.error').red
       end
 
       private
