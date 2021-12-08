@@ -4,8 +4,8 @@ module Controllers
   class SearchController
     attr_reader :search, :statistics, :searched_data
 
-    def search_a_car
-      create_search
+    def index(params = {})
+      create_search #TODO: perform_search
       create_statistics
       show_statistics
       show_cars
@@ -17,13 +17,9 @@ module Controllers
       show_cars
     end
 
-    def show_statistics
-      View::SearchView.new.output_statistics_table(@statistics)
-    end
+    
 
-    def show_cars
-      View::SearchView.new.output_cars_table(total_cars)
-    end
+    
 
     def save
       Models::SearchOperations::SearchStore.save(@searched_data, @statistics)
@@ -40,14 +36,6 @@ module Controllers
         requests_quantity: total_requests,
         total_quantity: total_cars.length
       }
-    end
-
-    def requirements(default_requirements)
-      data = View::SearchView.new
-      data.requirements_output unless default_requirements
-      data.default_requirements_output if default_requirements
-
-      @searched_data = data.searched_data
     end
 
     def total_cars

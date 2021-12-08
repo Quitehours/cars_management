@@ -9,20 +9,18 @@ require 'i18n'
 require 'terminal-table'
 require 'colorize'
 require 'colorized_string'
-require 'zeitwerk'
 
 require_relative './config/i18n'
 
 require_relative './lib/console'
 
-require_relative './app/controllers/car_controller'
+require_relative './app/controllers/cars_controller'
 require_relative './app/controllers/menu_controller'
 require_relative './app/controllers/search_controller'
 
 require_relative './app/models/menu'
 require_relative './app/models/search'
 
-require_relative './app/models/car/car_storer'
 require_relative './app/models/car/car'
 
 require_relative './app/models/menu_options/option_base'
@@ -45,3 +43,5 @@ require_relative './app/view/menu_view'
 require_relative './app/view/search_view'
 
 require_relative './db/file_manager'
+
+require_relative './app/helpers/car/car_storer'
