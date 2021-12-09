@@ -35,7 +35,7 @@ Layout/ClassStructure:
 
 Metrics/ParameterLists:
   Exclude: 
-    - 'app/models/car/car.rb'
+    - 'app/models/car.rb'
 
 Metrics/AbcSize:
   Max: 25

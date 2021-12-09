@@ -2,19 +2,21 @@
 
 module Controllers
   class MenuController
-    def menu
-      View::MenuView.new.output_menu_table(options)
-      View::MenuView.new.handlers_options(options)
+    def index
+      View::Menu.new.output_menu_table(options)
+      handler_menu_options
     end
 
-    def show_descriptions_menu_options
-      View::MenuView.new.output_help_option_table(options)
+    def handler_menu_options
+      View::Menu.new.output_enter_option_string
+      input_option = gets.chomp.to_i
+      View::Menu.new.handlers_options(options, input_option)
     end
 
     private
 
     def options
-      Models::Menu.new.sort_options_by_ranking
+      MenuOptions::OptionBase.descendants.sort_by { |option| -option.new.ranking }
     end
   end
 end

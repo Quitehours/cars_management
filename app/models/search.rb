@@ -16,10 +16,6 @@ module Models
 
     private
 
-    def collection_of_cars
-      FileManager.read_from_yaml(file_path: Models::Car::CarStorer::DB_CARS)
-    end
-
     def filtering_list_cars(data)
       Models::SearchOperations::FilterCars.new(data.cars).call(data)
     end

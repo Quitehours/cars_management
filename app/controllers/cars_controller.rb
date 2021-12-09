@@ -3,27 +3,43 @@
 module Controllers
   class CarsController
     def create(params)
-      @car = Models::Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
-      Helpers::Car::CarStorer.save(@car)
+      car = Models::Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
+      Services::Stores::CarStorer.save(car)
     end
 
     def index(params = {})
-      updated_params = params.blank? ? params : TransformValues.new(params)
+      updated_params = params.empty? ? params : Services::TransformValues.new(params).call
       perform_search(updated_params)
-      show_statistics unless params.blank?
+      show_statistics unless params.empty?
       show_cars
-      save unless params.blank?
+      # save unless params.empty?
     end
 
     private
 
+    def save
+      Services::Stores::SearchStore.save(@total_cars, @statistics)
+    end
+
+    def perform_search(params)
+      @total_cars = Queries::FindCars.new(collection_of_cars).call(params)
+      @statistics =
+        {
+          total_quantity: @total_cars.length,
+          requests_quantity: Services::Statistics::SameTotalRequests.new(params).call
+        }
+    end
+
+    def collection_of_cars
+      FileManager.read_from_yaml(file_path: Services::Stores::CarStore::DB_CARS)
+    end
+
     def show_statistics
-      
-      View::SearchView.new.output_statistics_table()
+      View::Cars.new.output_statistics_table(@statistics)
     end
 
     def show_cars
-      View::SearchView.new.output_cars_table(total_cars)
+      View::Cars.new.output_cars_table(@total_cars)
     end
   end
 end

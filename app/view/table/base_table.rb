@@ -8,15 +8,15 @@ module View
       end
 
       def rows
-        raise NotImplementedError, "#{self.class} #{I18n.t('exception.not_implemented_error')} '#{__method__}'"
+        raise NotImplementedError, "#{self.class} #{I18n.t('view.table.error.not_implemented_error')} '#{__method__}'"
       end
 
       def title
-        raise NotImplementedError, "#{self.class} #{I18n.t('exception.not_implemented_error')} '#{__method__}'"
+        raise NotImplementedError, "#{self.class} #{I18n.t('view.table.error.not_implemented_error')} '#{__method__}'"
       end
 
       def separator
-        raise NotImplementedError, "#{self.class} #{I18n.t('exception.not_implemented_error')} '#{__method__}'"
+        raise NotImplementedError, "#{self.class} #{I18n.t('view.table.error.not_implemented_error')} '#{__method__}'"
       end
 
       def width

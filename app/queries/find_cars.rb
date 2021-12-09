@@ -5,15 +5,15 @@ module Queries
     attr_reader :initial_cars
 
     def initialize(initial_cars)
-      @initial_cars = initial_cars
+      @initial_cars = time_parse(initial_cars)
     end
 
     def call(rules)
       cars = search(@initial_cars, 'make', rules[:make])
       cars = search(cars, 'model', rules[:model])
-      cars = filter_by_range(cars, 'year', rules[:year_from], rules[:year_to])
-      cars = filter_by_range(cars, 'price', rules[:price_from], rules[:price_to])
-      sort(cars, rules[:sort_type], rules[:sort_direction])
+      cars = filtration_by_range(cars, 'year', rules[:year_from], rules[:year_to])
+      cars = filtration_by_range(cars, 'price', rules[:price_from], rules[:price_to])
+      sorting(cars, rules[:sort_type], rules[:sort_direction])
     end
 
     private
@@ -28,7 +28,13 @@ module Queries
     end
 
     def sorting(cars, sort_type = 'date_added', sort_direction = nil)
-      sort_direction == 'asc' ? cars.sort_by { |car| car[sort_type] } : cars.sort_by { |car| car[sort_type] }.reverse
+      sort_direction == :asc ? cars.sort_by { |car| car[sort_type] } : cars.sort_by { |car| car[sort_type] }.reverse
+    end
+
+    def time_parse(data)
+      data.each do |car|
+        car['date_added'] = Time.strptime(car['date_added'], Models::Car::DEFAULT_TYPE_DATE)
+      end
     end
   end
 end

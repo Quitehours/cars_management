@@ -1,53 +1,55 @@
 en:
-  app:
-    models:
-      car:
-        id: ID 
-        make: Make
-        model: Model
-        year: Year 
-        odometer: Odometer
-        price: Price
-        description: Description
-        date_added: Date_added
-      menu_options:
-        exit_option:
-          name: Exit
-          description: This option closing application
-        help_option:
-          name: Help
-          description: This option has instructions for using the application
-        search_a_car_option:
-          name: Search a car
-          description: Starts a search by list cars
-        search_all_cars_option:
-          name: Search all cars
-          description: Returns a list of all cars  
-        error: has not implemented method
-    view:
-      table:
-        help: Help
-        statistics:
-          statistics: Statistics
-          total_quantity: Total Quantity
-          request_quantity: Request Quantity 
-        menu: Menu
-        cars:
-          results: Results
-      menu_view:
-        choice: Please select(Enter a number)
-        error: Error! Enter the number of the menu section.
-      search_view:
-        enter_option: Please enter option
-        sort_start: Please select search rules.
-        sort_parameter_make: Please choose make
-        sort_parameter_model: Please choose model
-        sort_parameter_year_from: Please choose year_from
-        sort_parameter_year_to: Please choose year_to
-        sort_parameter_price_from: Please choose price_from
-        sort_parameter_price_to: Please choose price_to
-        sort_type:  Please choose sort option (date_added|price)
-        sort_direction:  Please choose sort direction (desc|asc)
+  models:
+    car:
+      id: ID 
+      make: Make
+      model: Model
+      year: Year 
+      odometer: Odometer
+      price: Price
+      description: Description
+      date_added: Date_added
+  view:
+    table:
+      help: Help
+      statistics:
+        statistics: Statistics
+        total_quantity: Total Quantity
+        requests_quantity: Requests Quantity 
+      menu: Menu
+      cars:
+        results: Results
+    menu:
+      choice: Please select(Enter a number)
+      error: Error! Enter the number of the menu section.
+    base_table:
+      error:
+        not_implemented_error: has not implemented method
   lib:
     console:
       welcome_to_app: "Hi, these app analog_auto.ria! Find your dream Car!\nPlease, enter any key!"
+    menu_options:
+      exit_option:
+        name: Exit
+        description: This option closing application
+      help_option:
+        name: Help
+        description: This option has instructions for using the application
+      search_a_car_option:
+        name: Search a car
+        description: Starts a search by list cars
+      search_all_cars_option:
+        name: Search all cars
+        description: Returns a list of all cars  
+      error: has not implemented method
+    search_requirements:
+      enter_option: Please enter option
+      sort_start: Please select search rules.
+      sort_parameter_make: Please choose make
+      sort_parameter_model: Please choose model
+      sort_parameter_year_from: Please choose year_from
+      sort_parameter_year_to: Please choose year_to
+      sort_parameter_price_from: Please choose price_from
+      sort_parameter_price_to: Please choose price_to
+      sort_type: Please choose sort option (date_added|price)
+      sort_direction: Please choose sort direction (desc|asc)

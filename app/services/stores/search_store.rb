@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Models
-  module SearchOperations
+module Services
+  module Stores
     class SearchStore
       DB_SEARCHES = ENV.fetch('DB_SEARCHES', 'search.yml')
 
