@@ -2,19 +2,20 @@
 
 class Console
   def call
+    system(`clear`)
     puts start_app_string
-    console_assistent
+    await_enter_key
     loop do
       Controllers::MenuController.new.index
-      console_assistent
+      await_enter_key
+      system(`clear`)
     end
   end
 
   private
 
-  def console_assistent
+  def await_enter_key
     gets
-    system `clear`
   end
 
   def start_app_string

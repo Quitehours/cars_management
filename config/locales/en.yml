@@ -27,7 +27,7 @@ en:
         not_implemented_error: has not implemented method
   lib:
     console:
-      welcome_to_app: "Hi, these app analog_auto.ria! Find your dream Car!\nPlease, enter any key!"
+      welcome_to_app: 'Hi, these app analog_auto.ria! Find your dream Car!\nPlease, enter any key!'
     menu_options:
       exit_option:
         name: Exit
