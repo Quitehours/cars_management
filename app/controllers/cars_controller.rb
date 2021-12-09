@@ -12,13 +12,13 @@ module Controllers
       perform_search(updated_params)
       show_statistics unless params.empty?
       show_cars
-      # save unless params.empty?
+      save(params) unless params.empty?
     end
 
     private
 
-    def save
-      Services::Stores::SearchStore.save(@total_cars, @statistics)
+    def save(params)
+      Services::Stores::SearchStore.save(params, @statistics)
     end
 
     def perform_search(params)
