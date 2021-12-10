@@ -16,7 +16,7 @@ module Controllers
     private
 
     def options
-      MenuOptions::OptionBase.descendants.sort_by { |option| -option.new.ranking }
+      MenuOptions::OptionBase.ranking
     end
   end
 end

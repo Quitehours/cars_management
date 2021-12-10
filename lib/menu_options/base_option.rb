@@ -15,6 +15,12 @@ module MenuOptions
     end
 
     class << self
+      def ranking
+        descendants.sort_by { |option| -option.new.ranking }
+      end
+
+      private
+
       def descendants
         ObjectSpace.each_object(::Class).select { |klass| klass < self }
       end

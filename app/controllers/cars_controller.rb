@@ -8,18 +8,14 @@ module Controllers
     end
 
     def index(params = {})
-      updated_params = params.empty? ? params : Services::TransformValues.new(params).call
+      updated_params = params.any? ? Services::TransformValues.new(params).call : params
       perform_search(updated_params)
-      show_statistics unless params.empty?
+      show_statistics if params.any?
+      Services::Stores::SearchStore.save(params, @statistics) if params.any?
       show_cars
-      save(params) unless params.empty?
     end
 
     private
-
-    def save(params)
-      Services::Stores::SearchStore.save(params, @statistics)
-    end
 
     def perform_search(params)
       @total_cars = Queries::FindCars.new(collection_of_cars).call(params)

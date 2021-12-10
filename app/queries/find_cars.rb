@@ -2,8 +2,6 @@
 
 module Queries
   class FindCars
-    attr_reader :initial_cars
-
     def initialize(initial_cars)
       @initial_cars = time_parse(initial_cars)
     end
@@ -23,7 +21,7 @@ module Queries
     end
 
     def filtration_by_range(cars, param, from = nil, to = nil)
-      from ? cars.select { |car| car[param] > from } : cars
+      cars = from ? cars.select { |car| car[param] > from } : cars
       to ? cars.select { |car| car[param] < to } : cars
     end
 

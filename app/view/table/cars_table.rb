@@ -17,10 +17,6 @@ module View
         true
       end
 
-      def width
-        100
-      end
-
       def car_params_string(car)
         <<~CAR_PARAMS
           #{I18n.t('models.car.id').cyan}: #{car['id']}
