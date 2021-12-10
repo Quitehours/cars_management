@@ -27,7 +27,8 @@ module Controllers
     end
 
     def collection_of_cars
-      FileManager.read_from_yaml(file_path: Services::Stores::CarStore::DB_CARS)
+      cars = FileManager.read_from_yaml(file_path: Services::Stores::CarStore::DB_CARS)
+      cars.each { |car| car['date_added'] = Time.strptime(car['date_added'], Models::Car::DEFAULT_TYPE_DATE) }
     end
 
     def show_statistics

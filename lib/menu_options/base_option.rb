@@ -2,11 +2,15 @@
 
 module MenuOptions
   class OptionBase
-    def output_text
+    def name
       raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
     end
 
     def ranking
+      raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
+    end
+
+    def description
       raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
     end
 
