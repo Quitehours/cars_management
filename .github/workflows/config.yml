@@ -13,9 +13,8 @@ jobs:
       - name: Install Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 3.0.2
+          ruby-version: 3.0.x
           bundler-cache: true
-        
       - name: Install ruby gems
         run: bundle install
 
