@@ -9,6 +9,7 @@ require 'i18n'
 require 'terminal-table'
 require 'colorize'
 require 'colorized_string'
+require 'bcrypt'
 
 require_relative './config/i18n'
 
