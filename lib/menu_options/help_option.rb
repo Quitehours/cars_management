@@ -7,11 +7,11 @@ module MenuOptions
     end
 
     def name
-      I18n.t('lib.menu_options.help_option.name')
+      I18n.t('lib.menu_options.name.help_option')
     end
 
     def description
-      I18n.t('lib.menu_options.help_option.description')
+      I18n.t('lib.menu_options.description.help_option')
     end
 
     def handler

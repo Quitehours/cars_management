@@ -29,27 +29,22 @@ en:
     console:
       welcome_to_app: "Hi, these app analog_auto.ria! Find your dream Car!\nPlease, enter any key!"
     menu_options:
-      exit_option:
-        name: Exit
-        description: This option closing application
-      help_option:
-        name: Help
-        description: This option has instructions for using the application
-      search_a_car_option:
-        name: Search a car
-        description: Starts a search by list cars
-      search_all_cars_option:
-        name: Search all cars
-        description: Returns a list of all cars
-      log_out:
-        name: Log Out
-        description: Exit your active session 
-      log_in:
-        name: Log In
-        description: Log in to your account
-      sign_up:
-        name: Sign Up
-        description: Sign up your new account
+      name:
+        exit_option: Exit
+        help_option: Help
+        search_a_car_option: Search a car
+        search_all_cars_option: Search all cars
+        log_out: Exit your active session 
+        log_in: Log In
+        sign_up: Sign Up
+      description:
+        exit_option: This option closing application
+        help_option: This option has instructions for using the application
+        search_a_car_option: Starts a search by list cars
+        search_all_cars_option: Returns a list of all cars
+        log_out: Exit your active session
+        log_in: Log in to your account
+        sign_up: Sign up your new account
       error: has not implemented method
     search_requirements:
       enter_option: Please enter option

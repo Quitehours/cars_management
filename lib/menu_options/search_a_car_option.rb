@@ -18,11 +18,11 @@ module MenuOptions
     end
 
     def name
-      I18n.t('lib.menu_options.search_a_car_option.name')
+      I18n.t('lib.menu_options.name.search_a_car_option')
     end
 
     def description
-      I18n.t('lib.menu_options.search_a_car_option.description')
+      I18n.t('lib.menu_options.description.search_a_car_option')
     end
 
     def handler
