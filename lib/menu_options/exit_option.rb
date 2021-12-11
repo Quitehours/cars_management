@@ -3,7 +3,7 @@
 module MenuOptions
   class ExitOption < OptionBase
     def ranking
-      1
+      { main_menu: 0 }
     end
 
     def name

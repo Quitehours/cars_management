@@ -14,7 +14,7 @@ module MenuOptions
     }.freeze
 
     def ranking
-      4
+      { main_menu: 4 }
     end
 
     def name

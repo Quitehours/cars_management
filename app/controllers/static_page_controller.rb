@@ -9,7 +9,7 @@ module Controllers
     private
 
     def options
-      MenuOptions::OptionBase.ranking
+      MenuOptions::OptionBase.ranking(type_menu: :main_menu)
     end
   end
 end

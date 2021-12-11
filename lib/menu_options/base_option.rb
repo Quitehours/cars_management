@@ -19,8 +19,9 @@ module MenuOptions
     end
 
     class << self
-      def ranking
-        descendants.sort_by { |option| -option.new.ranking }
+      def ranking(type_menu:)
+        options = descendants.select { |option| option.new.ranking[type_menu] }
+        options.sort_by { |option| -option.new.ranking[type_menu] }
       end
 
       private

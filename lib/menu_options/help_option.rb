@@ -3,7 +3,7 @@
 module MenuOptions
   class HelpOption < OptionBase
     def ranking
-      2
+      { main_menu: 2 }
     end
 
     def name

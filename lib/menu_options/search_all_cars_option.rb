@@ -3,7 +3,7 @@
 module MenuOptions
   class SearchAllCarsOption < OptionBase
     def ranking
-      3
+      { main_menu: 3 }
     end
 
     def name
