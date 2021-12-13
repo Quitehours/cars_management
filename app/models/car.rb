@@ -20,14 +20,14 @@ module Models
 
     def to_h
       {
-        I18n.t('app.models.car.id') => @id,
-        I18n.t('app.models.car.make') => @make,
-        I18n.t('app.models.car.model') => @model,
-        I18n.t('app.models.car.year') => @year,
-        I18n.t('app.models.car.odometer') => @odometer,
-        I18n.t('app.models.car.price') => @price,
-        I18n.t('app.models.car.description') => @description,
-        I18n.t('app.models.car.date_added') => @date_added
+        I18n.t('models.car.id') => @id,
+        I18n.t('models.car.make') => @make,
+        I18n.t('models.car.model') => @model,
+        I18n.t('models.car.year') => @year,
+        I18n.t('models.car.odometer') => @odometer,
+        I18n.t('models.car.price') => @price,
+        I18n.t('models.car.description') => @description,
+        I18n.t('models.car.date_added') => @date_added
       }
     end
   end

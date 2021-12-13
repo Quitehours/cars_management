@@ -2,12 +2,16 @@
 
 module View
   class Menu
-    def output_menu_table(options)
-      puts View::Table::MenuTable.new(options).call
+    def output_main_menu_table(options)
+      puts View::Table::MainMenuTable.new(options).call
     end
 
     def output_help_option_table(options)
       puts View::Table::HelpTable.new(options).call
+    end
+
+    def output_log_menu_table(options)
+      puts View::Table::LogMenuTable.new(options).call
     end
 
     def handlers_options(options, input_option)

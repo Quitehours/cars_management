@@ -2,11 +2,11 @@
 
 module View
   module Table
-    class MenuTable < BaseTable
+    class MainMenuTable < BaseTable
       private
 
       def title
-        I18n.t('view.table.menu').yellow
+        I18n.t('view.table.main_menu').yellow
       end
 
       def rows

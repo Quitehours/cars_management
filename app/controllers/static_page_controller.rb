@@ -2,14 +2,14 @@
 
 module Controllers
   class StaticPageController
-    def show_options_description
-      View::StaticPage.new.output_options_description(options)
+    def show_options_description(type_menu)
+      View::StaticPage.new.output_options_description(options(type_menu))
     end
 
     private
 
-    def options
-      MenuOptions::OptionBase.ranking(type_menu: :main_menu)
+    def options(type_menu)
+      MenuOptions::OptionBase.ranking(type_menu: type_menu)
     end
   end
 end

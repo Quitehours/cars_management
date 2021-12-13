@@ -9,6 +9,10 @@ en:
       price: Price
       description: Description
       date_added: Date_added
+    user:
+      id: ID
+      email: Email
+      password: Password
   view:
     table:
       help: Help
@@ -16,7 +20,8 @@ en:
         statistics: Statistics
         total_quantity: Total Quantity
         requests_quantity: Requests Quantity 
-      menu: Menu
+      main_menu: Menu
+      log_menu: Log Menu
       cars:
         results: Results
     menu:
@@ -34,7 +39,7 @@ en:
         help_option: Help
         search_a_car_option: Search a car
         search_all_cars_option: Search all cars
-        log_out: Exit your active session 
+        log_out: Log Out
         log_in: Log In
         sign_up: Sign Up
       description:

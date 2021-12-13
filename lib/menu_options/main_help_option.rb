@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class HelpOption < OptionBase
+  class MainHelpOption < OptionBase
     def ranking
       { main_menu: 2 }
     end
@@ -15,7 +15,7 @@ module MenuOptions
     end
 
     def handler
-      Controllers::StaticPageController.new.show_options_description
+      Controllers::StaticPageController.new.show_options_description(:main_menu)
     end
   end
 end
