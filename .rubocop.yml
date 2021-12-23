@@ -39,3 +39,5 @@ Metrics/ParameterLists:
 
 Metrics/AbcSize:
   Max: 25
+  Exclude:
+    - 'app/view/table/cars_table.rb'

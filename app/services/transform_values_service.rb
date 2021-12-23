@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Services
-  class TransformValues
+  class TransformValuesService
     attr_reader :initial_rules
 
     TYPE_PRICE = 'price'

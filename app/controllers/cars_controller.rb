@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 module Controllers
-  class CarsController
+  class CarsController < BaseController
     def create(params)
       car = Models::Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
-      Services::Stores::CarStorer.save(car)
+      Services::Stores::CarStorerService.save(car)
     end
 
     def index(params = {})
-      updated_params = params.any? ? Services::TransformValues.new(params).call : params
+      updated_params = params.any? ? Services::TransformValuesService.new(params).call : params
       perform_search(updated_params)
       show_statistics if params.any?
-      Services::Stores::SearchStore.save(params, @statistics) if params.any?
+      Services::Stores::SearchStoreService.save(params, @statistics) if params.any?
       show_cars
     end
 
@@ -22,21 +22,21 @@ module Controllers
       @statistics =
         {
           total_quantity: @total_cars.length,
-          requests_quantity: Services::Statistics::SameTotalRequests.new(params).call
+          requests_quantity: Services::Statistics::SameTotalRequestsService.new(params).call
         }
     end
 
     def collection_of_cars
-      cars = FileManager.read_from_yaml(file_path: Services::Stores::CarStore::DB_CARS)
+      cars = Helpers::FileManagerHelper.read_from_yaml(file_path: Models::Car::DB_CARS)
       cars.each { |car| car['date_added'] = Time.strptime(car['date_added'], Models::Car::DEFAULT_TYPE_DATE) }
     end
 
     def show_statistics
-      View::Cars.new.output_statistics_table(@statistics)
+      renderer.render_searches_statistics(data: @statistics, table: View::Table::StatisticsTable)
     end
 
     def show_cars
-      View::Cars.new.output_cars_table(@total_cars)
+      renderer.render_search_result(cars: @total_cars, table: View::Table::CarsTable)
     end
   end
 end

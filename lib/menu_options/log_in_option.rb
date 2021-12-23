@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class LogInOption < OptionBase
-    def ranking
-      { log_menu: 2 }
-    end
-
+  class LogInOption < AuthBaseOption
     def name
       I18n.t('lib.menu_options.name.log_in')
     end
@@ -15,7 +11,11 @@ module MenuOptions
     end
 
     def handler
-      # Controllers::StaticPageController.new.show_options_description
+      Controllers::AuthController.new(context).index(action: :log_in, credentials: ask_user_info)
+    end
+
+    def show?
+      context.current_user.nil?
     end
   end
 end

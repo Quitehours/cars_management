@@ -1,32 +1,24 @@
 # frozen_string_literal: true
 
 module Controllers
-  class MenuController
-    def index(token: false)
-      hanlder_log_menu unless token
-      handler_main_menu if token
+  class MenuController < BaseController
+    def index
+      menu = context.current_user.nil? ? main_menu : user_menu
+
+      renderer.render_menu(menu: menu, table: View::Table::MenuTable)
+      renderer.show(text: I18n.t('view.menu.choice'))
+
+      menu.handle(renderer.prompt.to_i)
     end
 
     private
 
-    def handler_options(type_menu:)
-      View::Menu.new.output_enter_option_string
-      input_option = gets.chomp.to_i
-      View::Menu.new.handlers_options(options(type_menu), input_option)
+    def main_menu
+      @main_menu ||= View::Menu::MainMenu.new(context)
     end
 
-    def hanlder_log_menu
-      View::Menu.new.output_log_menu_table(options(:log_menu))
-      handler_options(type_menu: :log_menu)
-    end
-
-    def handler_main_menu
-      View::Menu.new.output_main_menu_table(options(:main_menu))
-      handler_options(type_menu: :main_menu)
-    end
-
-    def options(type_menu)
-      MenuOptions::OptionBase.ranking(type_menu: type_menu)
+    def user_menu
+      @user_menu ||= View::Menu::UserMenu.new(context)
     end
   end
 end

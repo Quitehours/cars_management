@@ -2,5 +2,4 @@
 
 require_relative 'auto_loader'
 
-console = Console.new
-console.call
+Console.new.call

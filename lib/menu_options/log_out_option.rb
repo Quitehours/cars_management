@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class LogOutOption < OptionBase
-    def ranking
-      { main_menu: 1 }
-    end
-
+  class LogOutOption < AuthBaseOption
     def name
       I18n.t('lib.menu_options.name.log_out')
     end
@@ -15,7 +11,11 @@ module MenuOptions
     end
 
     def handler
-      # Controllers::StaticPageController.new.show_options_description
+      Controllers::AuthController.new(context).log_out
+    end
+
+    def show?
+      !context.current_user.nil?
     end
   end
 end

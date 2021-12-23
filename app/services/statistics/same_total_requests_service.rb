@@ -2,7 +2,7 @@
 
 module Services
   module Statistics
-    class SameTotalRequests
+    class SameTotalRequestsService
       def initialize(intial_rules)
         @intial_rules = intial_rules
       end
@@ -15,7 +15,7 @@ module Services
       private
 
       def collection_of_searches
-        FileManager.read_from_yaml(file_path: Services::Stores::SearchStore::DB_SEARCHES)
+        Helpers::FileManagerHelper.read_from_yaml(file_path: Services::Stores::SearchStoreService::DB_SEARCHES)
       end
     end
   end

@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 module Controllers
-  class StaticPageController
-    def show_options_description(type_menu)
-      View::StaticPage.new.output_options_description(options(type_menu))
+  class StaticPageController < BaseController
+    def options_description
+      menu = context.current_user.nil? ? main_menu : user_menu
+      renderer.render_options_description(menu: menu, table: View::Table::HelpTable)
     end
 
     private
 
-    def options(type_menu)
-      MenuOptions::OptionBase.ranking(type_menu: type_menu)
+    def main_menu
+      @main_menu ||= View::Menu::MainMenu.new(context)
+    end
+
+    def user_menu
+      @user_menu ||= View::Menu::UserMenu.new(context)
     end
   end
 end

@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class ExitOption < OptionBase
-    def ranking
-      { main_menu: 0 }
-    end
-
+  class ExitOption < BaseOption
     def name
       I18n.t('lib.menu_options.name.exit_option')
     end
@@ -16,6 +12,10 @@ module MenuOptions
 
     def handler
       exit
+    end
+
+    def show?
+      true
     end
   end
 end

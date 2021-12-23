@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class MainHelpOption < OptionBase
-    def ranking
-      { main_menu: 2 }
-    end
-
+  class HelpOption < BaseOption
     def name
       I18n.t('lib.menu_options.name.help_option')
     end
@@ -15,7 +11,11 @@ module MenuOptions
     end
 
     def handler
-      Controllers::StaticPageController.new.show_options_description(:main_menu)
+      Controllers::StaticPageController.new(context).options_description
+    end
+
+    def show?
+      true
     end
   end
 end

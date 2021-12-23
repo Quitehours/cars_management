@@ -2,23 +2,25 @@
 
 class Console
   def call
-    system(`clear`)
-    puts start_app_string
-    await_enter_key
+    pause_app
     loop do
-      Controllers::MenuController.new.index
-      await_enter_key
-      system(`clear`)
+      console_clear
+      Controllers::MenuController.new(context).index
+      pause_app
     end
   end
 
   private
 
-  def await_enter_key
+  def console_clear
+    system(`clear`)
+  end
+
+  def pause_app
     gets
   end
 
-  def start_app_string
-    I18n.t('lib.console.welcome_to_app')
+  def context
+    @context ||= Helpers::RequestContextHelper.new
   end
 end

@@ -10,7 +10,7 @@ module View
       end
 
       def rows
-        @options.map { |option| [option.new.name.cyan, option.new.description] }
+        @options.map { |option| [option.name.cyan, option.description] }
       end
 
       def separator
