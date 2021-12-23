@@ -23,6 +23,7 @@ require_relative './lib/menu_options/search_all_cars_option'
 require_relative './lib/menu_options/log_out_option'
 require_relative './lib/menu_options/log_in_option'
 require_relative './lib/menu_options/sign_up_option'
+require_relative './lib/menu_options/my_searches_option'
 
 require_relative './app/controllers/base_controller'
 require_relative './app/controllers/cars_controller'

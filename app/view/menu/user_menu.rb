@@ -6,6 +6,7 @@ module View
       use_options MenuOptions::SearchACarOption,
                   MenuOptions::SearchAllCarsOption,
                   MenuOptions::HelpOption,
+                  MenuOptions::MySearchesOption,
                   MenuOptions::LogOutOption,
                   MenuOptions::ExitOption
     end
