@@ -1,10 +1,13 @@
 en:
   controllers:
       auth:
-        user_auth: Hello,
+        log_out: Bye
+        sign_up:
+          user_exist: User already exists.
+        log_in:
+          user_not_exist: User not exists yet.
+        user_auth: Hello
   errors:
-    user_exists: User already exists.
-    user__not_exists: User not exists yet.
     invalid_email: |
       Email isn't correct. Email should have: 
       - email-type format

@@ -15,7 +15,7 @@ require 'singleton'
 require_relative './config/i18n'
 
 require_relative './lib/menu_options/base_option'
-require_relative './lib/menu_options/auth_base_option'
+require_relative './lib/menu_options/authentication_base_option'
 require_relative './lib/menu_options/exit_option'
 require_relative './lib/menu_options/help_option'
 require_relative './lib/menu_options/search_a_car_option'
@@ -27,7 +27,7 @@ require_relative './lib/menu_options/my_searches_option'
 
 require_relative './app/controllers/base_controller'
 require_relative './app/controllers/cars_controller'
-require_relative './app/controllers/auth_controller'
+require_relative './app/controllers/authentication_controller'
 require_relative './app/controllers/menu_controller'
 require_relative './app/controllers/static_page_controller'
 

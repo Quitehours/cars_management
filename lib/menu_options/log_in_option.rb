@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class LogInOption < AuthBaseOption
+  class LogInOption < AuthenticationBaseOption
     def name
       I18n.t('lib.menu_options.name.log_in')
     end
@@ -11,7 +11,7 @@ module MenuOptions
     end
 
     def handler
-      Controllers::AuthController.new(context).index(action: :log_in, credentials: ask_user_info)
+      Controllers::AuthenticationController.new(context).index(action: :log_in, credentials: ask_user_info)
     end
 
     def show?

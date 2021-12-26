@@ -11,17 +11,12 @@ module Models
 
     def to_h
       {
-        email: email,
-        password: password
+        email: @email,
+        password: @password
       }
     end
 
     class << self
-      def create(credentials)
-        new_user = new(**credentials.slice(:email, :password))
-        Services::Stores::UserStoreService.save(new_user)
-      end
-
       def find_one(credentials:, only_email: false)
         return users.find { |user| user[:email] == credentials[:email] } if only_email
 

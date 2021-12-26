@@ -8,7 +8,7 @@ module Services
       class << self
         def save(new_user)
           collection_users = Helpers::FileManagerHelper.read_from_yaml(file_path: DB_USERS)
-          collection_users.push(new_user.to_h)
+          collection_users.push(new_user)
 
           Helpers::FileManagerHelper.write_to_yaml(file_path: DB_USERS, data: collection_users)
         end
