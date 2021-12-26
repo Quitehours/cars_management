@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class AuthBaseOption < BaseOption
+  class AuthenticationBaseOption < BaseOption
     USER_INFO =
       {
         email: I18n.t('lib.user_info.email'),
