@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class SignUpOption < AuthenticationBaseOption
+  class SignUpOption < BaseOption
     def name
       I18n.t('lib.menu_options.name.sign_up')
     end
@@ -11,7 +11,7 @@ module MenuOptions
     end
 
     def handler
-      Controllers::AuthenticationController.new(context).index(action: :sign_up, credentials: ask_user_info)
+      Controllers::UsersController.new(context).create
     end
 
     def show?

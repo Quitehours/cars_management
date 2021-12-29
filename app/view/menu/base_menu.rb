@@ -7,7 +7,7 @@ module View
 
       def initialize(context)
         @context = context
-        @options = self.class.options.map { |option| option.new(context) }
+        @options = self.class.options.map { |option| option.new(context) }.select(&:show?)
       end
 
       def handle(input_option)

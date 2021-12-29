@@ -2,8 +2,9 @@
 
 module Controllers
   class BaseController
-    def initialize(context)
+    def initialize(context, params = {})
       @context = context
+      @params = params
     end
 
     protected
@@ -14,6 +15,6 @@ module Controllers
 
     private
 
-    attr_reader :context
+    attr_reader :context, :params
   end
 end

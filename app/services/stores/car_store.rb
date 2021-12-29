@@ -2,7 +2,7 @@
 
 module Services
   module Stores
-    class CarStoreService
+    class CarStore
       def self.save(new_car)
         collection_cars = Helpers::FileManagerHelper.read_from_yaml(file_path: DB_CARS)
 

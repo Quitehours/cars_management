@@ -4,9 +4,12 @@ module Models
   class User
     DB_USERS = ENV.fetch('DB_USERS', 'users.yml')
 
-    def initialize(credentials)
-      @email = credentials[:email]
-      @password = BCrypt::Password.create(credentials[:password])
+    attr_reader :email, :password, :original_password
+
+    def initialize(params)
+      @email = params[:email]
+      @original_password = params[:password]
+      @password = BCrypt::Password.create(params[:password])
     end
 
     def to_h
@@ -17,16 +20,15 @@ module Models
     end
 
     class << self
-      def find_one(credentials:, only_email: false)
-        return users.find { |user| user[:email] == credentials[:email] } if only_email
-
-        users.find { |user| user == credentials }
+      def find_by(params)
+        user_params = all.find { |user| user.slice(*params.keys) == params }
+        new(user_params) if user_params
       end
 
       private
 
-      def users
-        @users ||= Helpers::FileManagerHelper.read_from_yaml(file_path: DB_USERS)
+      def all
+        @all ||= Helpers::FileManagerHelper.read_from_yaml(file_path: DB_USERS)
       end
     end
   end

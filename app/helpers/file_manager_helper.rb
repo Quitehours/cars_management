@@ -2,7 +2,7 @@
 
 module Helpers
   class FileManagerHelper
-    WHITELIST_CLASSES = [Symbol, Time, Models::Car, Services::Stores::CarStoreService, BCrypt::Password].freeze
+    WHITELIST_CLASSES = [Symbol, Time, Models::Car, Models::User, BCrypt::Password].freeze
 
     class << self
       def write_to_yaml(file_path:, data:)
