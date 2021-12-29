@@ -11,7 +11,7 @@ module Services
           current_search = search_to_hash(rules, statistics)
 
           already_exists?(temp_data, rules) ? temp_data = same_search(temp_data, rules) : temp_data.push(current_search)
-          FileManager.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
+          Helpers::FileManagerHelper.write_to_yaml(file_path: DB_SEARCHES, data: temp_data)
         end
 
         private
@@ -23,7 +23,7 @@ module Services
         end
 
         def collection_of_searches
-          FileManager.read_from_yaml(file_path: DB_SEARCHES)
+          Helpers::FileManagerHelper.read_from_yaml(file_path: DB_SEARCHES)
         end
 
         def already_exists?(searches, rules)

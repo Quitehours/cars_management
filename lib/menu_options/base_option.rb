@@ -1,23 +1,29 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class OptionBase
-    def output_text
-      raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
+  class BaseOption
+    def initialize(context)
+      @context = context
     end
 
-    def ranking
-      raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
+    def name
+      raise NotImplementedError, "#{self.class} #{I18n.t('lib.menu_options.error')} '#{__method__}'"
+    end
+
+    def description
+      raise NotImplementedError, "#{self.class} #{I18n.t('lib.menu_options.error')} '#{__method__}'"
     end
 
     def handler
-      raise NotImplementedError, "#{self.class} #{I18n.t('app.models.menu_options.error')} '#{__method__}'"
+      raise NotImplementedError, "#{self.class} #{I18n.t('lib.menu_options.error')} '#{__method__}'"
     end
 
-    class << self
-      def descendants
-        ObjectSpace.each_object(::Class).select { |klass| klass < self }
-      end
+    def show?
+      raise NotImplementedError, "#{self.class} #{I18n.t('lib.menu_options.error')} '#{__method__}'"
     end
+
+    private
+
+    attr_reader :context
   end
 end

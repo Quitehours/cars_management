@@ -14,7 +14,7 @@
 /lib/bundler/man/
 
 .ruby-gemset
-.rvmrc
 
 db.yml
 search.yml
+users.yml

@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
 module Controllers
-  class MenuController
+  class MenuController < BaseController
     def index
-      View::Menu.new.output_menu_table(options)
-      handler_menu_options
-    end
+      renderer.render_table(data: main_menu.options, table: View::Table::MenuTable)
+      renderer.render_plain(text: I18n.t('view.menu.choice'))
 
-    def handler_menu_options
-      View::Menu.new.output_enter_option_string
-      input_option = gets.chomp.to_i
-      View::Menu.new.handlers_options(options, input_option)
+      main_menu.handle(renderer.prompt.to_i)
     end
 
     private
 
-    def options
-      MenuOptions::OptionBase.descendants.sort_by { |option| -option.new.ranking }
+    def main_menu
+      @main_menu ||= View::Menu::MainMenu.new(context)
     end
   end
 end

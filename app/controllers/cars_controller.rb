@@ -1,45 +1,47 @@
 # frozen_string_literal: true
 
 module Controllers
-  class CarsController
-    def create(params)
-      car = Models::Car.new(**params.slice(:make, :model, :year, :odometer, :price, :description))
-      Services::Stores::CarStorer.save(car)
+  class CarsController < BaseController
+    def create
+      car = Models::Car.new(**create_params)
+      Services::Stores::CarStore.save(car)
     end
 
-    def index(params = {})
-      updated_params = params.empty? ? params : Services::TransformValues.new(params).call
-      perform_search(updated_params)
-      show_statistics unless params.empty?
+    def index
+      @found_cars = Queries::FindCars.new(collection_of_cars).call(search_params)
+      @same_search_requests_quantity = Services::Statistics::SameSearchRequestQuantity.new(search_params).call
+      show_statistics if search_params.any?
+      Services::Stores::SearchStore.save(search_params, statistics_params) if search_params.any?
       show_cars
-      save(params) unless params.empty?
     end
 
     private
 
-    def save(params)
-      Services::Stores::SearchStore.save(params, @statistics)
+    def create_params
+      params.slice(:make, :model, :year, :odometer, :price, :description)
     end
 
-    def perform_search(params)
-      @total_cars = Queries::FindCars.new(collection_of_cars).call(params)
-      @statistics =
-        {
-          total_quantity: @total_cars.length,
-          requests_quantity: Services::Statistics::SameTotalRequests.new(params).call
-        }
+    def search_params
+      @search_params ||= params.any? ? Services::TransformParams.new(params).call : params
     end
 
     def collection_of_cars
-      FileManager.read_from_yaml(file_path: Services::Stores::CarStore::DB_CARS)
+      Helpers::FileManagerHelper.read_from_yaml(file_path: Models::Car::DB_CARS)
+    end
+
+    def statistics_params
+      {
+        total_quantity: @found_cars.length,
+        requests_quantity: @same_search_requests_quantity
+      }
     end
 
     def show_statistics
-      View::Cars.new.output_statistics_table(@statistics)
+      renderer.render_table(data: statistics_params, table: View::Table::StatisticsTable)
     end
 
     def show_cars
-      View::Cars.new.output_cars_table(@total_cars)
+      renderer.render_table(data: @found_cars, table: View::Table::CarsTable)
     end
   end
 end

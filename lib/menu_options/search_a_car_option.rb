@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class SearchACarOption < OptionBase
+  class SearchACarOption < BaseOption
     SEARCH_REQUIRMENTS = {
       make: I18n.t('lib.search_requirements.sort_parameter_make'),
       model: I18n.t('lib.search_requirements.sort_parameter_model'),
@@ -13,27 +13,27 @@ module MenuOptions
       sort_direction: I18n.t('lib.search_requirements.sort_direction')
     }.freeze
 
-    def ranking
-      4
-    end
-
     def name
-      I18n.t('lib.menu_options.search_a_car_option.name')
+      I18n.t('lib.menu_options.name.search_a_car_option')
     end
 
     def description
-      I18n.t('lib.menu_options.search_a_car_option.description')
+      I18n.t('lib.menu_options.description.search_a_car_option')
     end
 
     def handler
-      Controllers::CarsController.new.index(ask_search_criteria)
+      Controllers::CarsController.new(context, ask_search_criteria).index
+    end
+
+    def show?
+      true
     end
 
     private
 
     def ask_search_criteria
       search_criteria = {}
-      puts I18n.t('lib.search_requirements.enter_option')
+      puts I18n.t('lib.search_requirements.enter_options')
       SEARCH_REQUIRMENTS.map do |rule, requirement|
         puts "#{requirement}: "
         search_criteria[rule] = gets.chomp

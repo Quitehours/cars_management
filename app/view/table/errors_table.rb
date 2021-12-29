@@ -2,15 +2,15 @@
 
 module View
   module Table
-    class MenuTable < BaseTable
+    class ErrorsTable < BaseTable
       private
 
       def title
-        I18n.t('view.table.menu').yellow
+        I18n.t('view.table.errors').red
       end
 
       def rows
-        @options.map.with_index(1) { |option, index| [index, option.name] }
+        @options.map { |option| [option.red] }
       end
 
       def separator

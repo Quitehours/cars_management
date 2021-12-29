@@ -15,19 +15,19 @@ module Models
       @odometer = odometer
       @price = price
       @description = description
-      @date_added = Time.new.strftime(DEFAULT_TYPE_DATE)
+      @date_added = Time.now.to_i
     end
 
     def to_h
       {
-        I18n.t('app.models.car.id') => @id,
-        I18n.t('app.models.car.make') => @make,
-        I18n.t('app.models.car.model') => @model,
-        I18n.t('app.models.car.year') => @year,
-        I18n.t('app.models.car.odometer') => @odometer,
-        I18n.t('app.models.car.price') => @price,
-        I18n.t('app.models.car.description') => @description,
-        I18n.t('app.models.car.date_added') => @date_added
+        'id' => @id,
+        'make' => @make,
+        'model' => @model,
+        'year' => @year,
+        'odometer' => @odometer,
+        'price' => @price,
+        'description' => @description,
+        'date_added' => @date_added
       }
     end
   end
