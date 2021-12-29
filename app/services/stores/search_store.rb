@@ -2,8 +2,8 @@
 
 module Services
   module Stores
-    class UserSearchesStoreService
-      DB_SEARCHES = ENV.fetch('DB_USER_SEARCHES', 'user_searches.yml')
+    class SearchStore
+      DB_SEARCHES = ENV.fetch('DB_SEARCHES', 'search.yml')
 
       class << self
         def save(rules, statistics)

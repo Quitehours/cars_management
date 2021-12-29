@@ -26,7 +26,7 @@ module View
           #{I18n.t('view.table.car.odometer').cyan}: #{car['odometer']}
           #{I18n.t('view.table.car.price').cyan}: #{car['price']}
           #{I18n.t('view.table.car.description').cyan}: #{car['description']}
-          #{I18n.t('view.table.car.date_added').cyan}: #{car['date_added'].strftime(Models::Car::DEFAULT_TYPE_DATE)}
+          #{I18n.t('view.table.car.date_added').cyan}: #{Time.at(car['date_added']).strftime(Models::Car::DEFAULT_TYPE_DATE)}
         CAR_PARAMS
       end
     end

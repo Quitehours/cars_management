@@ -22,7 +22,7 @@ module MenuOptions
     end
 
     def handler
-      Controllers::CarsController.new(context).index(ask_search_criteria)
+      Controllers::CarsController.new(context, ask_search_criteria).index
     end
 
     def show?

@@ -1,7 +1,7 @@
 en:
   controllers:
       auth:
-        log_out: Bye
+        log_out: "Bye, %{email}"
         sign_up:
           user_exist: User already exists.
         log_in:

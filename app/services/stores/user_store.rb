@@ -2,7 +2,7 @@
 
 module Services
   module Stores
-    class UserStoreService
+    class UserStore
       DB_USERS = ENV.fetch('DB_USERS', 'users.yml')
 
       class << self

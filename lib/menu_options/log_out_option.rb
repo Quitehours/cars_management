@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MenuOptions
-  class LogOutOption < AuthenticationBaseOption
+  class LogOutOption < BaseOption
     def name
       I18n.t('lib.menu_options.name.log_out')
     end
@@ -11,7 +11,7 @@ module MenuOptions
     end
 
     def handler
-      Controllers::AuthenticationController.new(context).index(action: :log_out)
+      Controllers::SessionsController.new(context).destroy
     end
 
     def show?

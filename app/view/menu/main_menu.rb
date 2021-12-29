@@ -8,6 +8,7 @@ module View
                   MenuOptions::HelpOption,
                   MenuOptions::SignUpOption,
                   MenuOptions::LogInOption,
+                  MenuOptions::LogOutOption,
                   MenuOptions::ExitOption
     end
   end

@@ -15,7 +15,7 @@ module Models
       @odometer = odometer
       @price = price
       @description = description
-      @date_added = Time.new.strftime(DEFAULT_TYPE_DATE)
+      @date_added = Time.now.to_i
     end
 
     def to_h
