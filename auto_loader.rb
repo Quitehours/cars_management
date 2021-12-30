@@ -11,7 +11,6 @@ require 'colorize'
 require 'colorized_string'
 require 'bcrypt'
 require 'singleton'
-require 'ffaker'
 
 require_relative './config/i18n'
 

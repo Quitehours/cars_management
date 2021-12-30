@@ -3,7 +3,7 @@
 module Services
   module Stores
     class UserStore
-      DB_USERS = ENV.fetch('DB_USERS', 'users.yml')
+      DB_USERS = ENV.fetch('DB_USERS', './db/users.yml')
 
       class << self
         def save(new_user)

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
-task :default do
-  puts "Hello World!"
-end
+require_relative 'auto_loader'
+
+require_relative './lib/tasks/db_clear'
+# require_relative './lib/tasks/1'
