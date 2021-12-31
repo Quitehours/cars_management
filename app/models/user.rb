@@ -2,7 +2,7 @@
 
 module Models
   class User
-    DB_USERS = ENV.fetch('DB_USERS', 'users.yml')
+    DB_USERS = ENV.fetch('DB_USERS', './db/users.yml')
 
     attr_reader :email, :password, :original_password
 
