@@ -16,4 +16,8 @@
   <li>Open the terminal and enter the command:</li>
   <code>ruby index.rb</code>
   <li><p>Congratulation! You installed this app and runned!</p></li>
+  <li><p>You can also management database for this you need to write the command to the terminal:
+  <p><code>$ rake db:cars:clear  </code> - Clear whole database </p>
+  <p><code>$ rake db:cars:create[quantity]  </code> - Added cars to database </p>
+</p></li>
 </ol>

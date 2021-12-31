@@ -2,7 +2,7 @@
 
 namespace :db do
   namespace :cars do
-    desc 'Added cars to db.yml'
+    desc 'Added cars to database'
     task :create, :quantity do |_, args|
       Rake::Task['cars:seed'].invoke
 
