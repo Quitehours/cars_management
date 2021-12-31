@@ -7,14 +7,14 @@ module Models
     DB_CARS = ENV.fetch('DB_CARS', './db/db.yml')
     DEFAULT_TYPE_DATE = '%d/%m/%y'
 
-    def initialize(make:, model:, year:, odometer:, price:, description: '')
+    def initialize(params)
       @id = SecureRandom.uuid
-      @make = make
-      @model = model
-      @year = year
-      @odometer = odometer
-      @price = price
-      @description = description
+      @make = params['make']
+      @model = params['model']
+      @year = params['year']
+      @odometer = params['odometer']
+      @price = params['price']
+      @description = params['description']
       @date_added = Time.now.to_i
     end
 
