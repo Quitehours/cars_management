@@ -37,6 +37,11 @@ Metrics/ParameterLists:
   Exclude: 
     - 'app/models/car.rb'
 
+Metrics/BlockLength:
+  Max: 36
+  Exclude:
+    - 'lib/tasks/db.rb'
+
 Metrics/AbcSize:
   Max: 25
   Exclude:

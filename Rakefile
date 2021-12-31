@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
+require 'ffaker'
+
 require_relative 'auto_loader'
 
-require_relative './lib/tasks/db_cars'
-require_relative './lib/tasks/repository'
+require_relative './lib/tasks/db'
