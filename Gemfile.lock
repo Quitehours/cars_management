@@ -37,6 +37,7 @@ GEM
       method_source (~> 1.0)
     racc (1.6.0)
     rainbow (3.0.0)
+    rake (13.0.3)
     regexp_parser (2.1.1)
     reverse_markdown (2.1.1)
       nokogiri
@@ -95,6 +96,7 @@ DEPENDENCIES
   i18n (~> 1.8)
   lefthook (~> 0.5.5)
   pry (~> 0.13.1)
+  rake (~> 13.0)
   rubocop (~> 1.22.0)
   rubocop-md (~> 1.0)
   rubocop-performance (~> 1.11)
