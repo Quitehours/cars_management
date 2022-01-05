@@ -3,7 +3,7 @@
 module Controllers
   class SessionsController < BaseController
     def create
-      user = Models::User.find_by(params)
+      user = Repositories::UserRepository.find_by(params)
       if user
         context.current_user = user
       else

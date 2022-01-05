@@ -8,14 +8,8 @@ module Services
       end
 
       def call
-        result = collection_of_searches.find { |search| search[:initial_rules] == @initial_rules }
+        result = Repositories::SearchRepository.all.find { |search| search[:search_requirements] == @initial_rules }
         result.nil? ? 0 : result[:statistics][:requests_quantity]
-      end
-
-      private
-
-      def collection_of_searches
-        Helpers::FileManagerHelper.read_from_yaml(file_path: Services::Stores::SearchStore::DB_SEARCHES)
       end
     end
   end

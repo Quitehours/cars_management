@@ -11,7 +11,7 @@ module MenuOptions
     end
 
     def handler
-      # Controllers::StaticPageController.new(context).options_description
+      Controllers::UsersController.new(context).user_searches
     end
 
     def show?

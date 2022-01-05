@@ -4,7 +4,6 @@ module Models
   class Car
     attr_reader :make, :model, :year, :odometer, :price, :description, :date_added
 
-    DB_CARS = ENV.fetch('DB_CARS', 'db.yml')
     DEFAULT_TYPE_DATE = '%d/%m/%y'
 
     def initialize(make:, model:, year:, odometer:, price:, description: '')
