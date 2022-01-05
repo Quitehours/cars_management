@@ -3,11 +3,11 @@
 module Controllers
   class SessionsController < BaseController
     def create
-      user = Models::User.find_by(params)
+      user = Repositories::UserRepository.find_by(params)
       if user
         context.current_user = user
       else
-        renderer.render_table(data: [I18n.t('controllers.auth.log_in.user_not_exist')], table: View::Table::ErrorsTable)
+        renderer.render_table(data: [I18n.t('errors.user_not_exists')], table: View::Table::ErrorsTable)
       end
     end
 

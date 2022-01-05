@@ -28,6 +28,16 @@ en:
         price: Price
         description: Description
         date_added: Date_added
+      search:
+        make: Make
+        model: Model
+        year_from: Year from
+        year_to: Year to
+        price_from: Price From
+        price_to: Price To
+        sort_type: Sort Type
+        sort_direction: Sort Direction
+      user_searches: My Searches
       help: Help
       statistics:
         statistics: Statistics
