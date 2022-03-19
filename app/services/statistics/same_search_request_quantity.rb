@@ -15,7 +15,7 @@ module Services
       private
 
       def collection_of_searches
-        Helpers::FileManagerHelper.read_from_yaml(file_path: Services::Stores::SearchStore::DB_SEARCHES)
+        Repositories::CarRepository.all
       end
     end
   end
